@@ -1,0 +1,97 @@
+{
+  "specimen_origin": {
+    "so_a_specimen_type": [
+      {"id": "SO_A1", "name": "щипцовая биопсия", "text": "Щипцовая биопсия", "category": "biopsy", "size_class": "small"},
+      {"id": "SO_A2", "name": "щипцовая биопсия", "text": "Биопсия (forceps)", "category": "biopsy", "size_class": "small"},
+      {"id": "SO_A3", "name": "core-биопсия", "text": "Трансторакальная core-биопсия (CT-guided)", "category": "biopsy", "size_class": "small"},
+      {"id": "SO_A4", "name": "core-биопсия", "text": "Кор-биопсия под КТ-навигацией", "category": "biopsy", "size_class": "small"},
+      {"id": "SO_A5", "name": "EBUS-TBNA", "text": "EBUS-TBNA (эндобронхиальная ультразвуковая тонкоигольная аспирационная биопсия)", "category": "cytology_plus", "size_class": "tiny"},
+      {"id": "SO_A6", "name": "EBUS-TBNA", "text": "Трансбронхиальная пункция лимфоузла под контролем EBUS", "category": "cytology_plus", "size_class": "tiny"},
+      {"id": "SO_A7", "name": "криобиопсия", "text": "Трансбронхиальная криобиопсия", "category": "biopsy", "size_class": "medium"},
+      {"id": "SO_A8", "name": "трансбронхиальная биопсия", "text": "Трансбронхиальная биопсия лёгкого (TBLB)", "category": "biopsy", "size_class": "small"},
+      {"id": "SO_A9", "name": "клиновидная резекция", "text": "Клиновидная резекция (wedge resection)", "category": "resection", "size_class": "large"},
+      {"id": "SO_A10", "name": "сегментэктомия", "text": "Анатомическая сегментэктомия", "category": "resection", "size_class": "large"},
+      {"id": "SO_A11", "name": "лобэктомия", "text": "Лобэктомия", "category": "resection", "size_class": "large"},
+      {"id": "SO_A12", "name": "билобэктомия", "text": "Билобэктомия", "category": "resection", "size_class": "large"},
+      {"id": "SO_A13", "name": "пневмонэктомия", "text": "Пневмонэктомия", "category": "resection", "size_class": "large"}
+    ],
+    "so_b_side": [
+      {"id": "SO_B1", "text": "правого лёгкого", "side": "right"},
+      {"id": "SO_B2", "text": "левого лёгкого", "side": "left"},
+      {"id": "SO_B3", "text": "справа", "side": "right"},
+      {"id": "SO_B4", "text": "слева", "side": "left"}
+    ],
+    "so_c_lobe": [
+      {"id": "SO_C1", "text": "верхней доли", "lobe": "upper", "sides": ["right", "left"]},
+      {"id": "SO_C2", "text": "средней доли", "lobe": "middle", "sides": ["right"]},
+      {"id": "SO_C3", "text": "нижней доли", "lobe": "lower", "sides": ["right", "left"]},
+      {"id": "SO_C4", "text": "язычковых сегментов", "lobe": "lingula", "sides": ["left"]}
+    ],
+    "so_d_segment": [
+      {"id": "SO_D1", "text": "S1 (верхушечный сегмент)", "segment": "S1", "lobe": "upper", "side": "right"},
+      {"id": "SO_D2", "text": "S2 (задний сегмент)", "segment": "S2", "lobe": "upper", "side": "right"},
+      {"id": "SO_D3", "text": "S3 (передний сегмент)", "segment": "S3", "lobe": "upper", "side": "right"},
+      {"id": "SO_D4", "text": "S4 (латеральный сегмент)", "segment": "S4", "lobe": "middle", "side": "right"},
+      {"id": "SO_D5", "text": "S5 (медиальный сегмент)", "segment": "S5", "lobe": "middle", "side": "right"},
+      {"id": "SO_D6", "text": "S6 (верхушечный сегмент нижней доли)", "segment": "S6", "lobe": "lower", "side": "both"},
+      {"id": "SO_D7", "text": "S7 (медиальный базальный)", "segment": "S7", "lobe": "lower", "side": "both"},
+      {"id": "SO_D8", "text": "S8 (передний базальный)", "segment": "S8", "lobe": "lower", "side": "both"},
+      {"id": "SO_D9", "text": "S9 (латеральный базальный)", "segment": "S9", "lobe": "lower", "side": "both"},
+      {"id": "SO_D10", "text": "S10 (задний базальный)", "segment": "S10", "lobe": "lower", "side": "both"},
+      {"id": "SO_D11", "text": "S1+2 (верхушечно-задний сегмент)", "segment": "S1+2", "lobe": "upper", "side": "left"},
+      {"id": "SO_D12", "text": "S4 (верхний язычковый)", "segment": "S4-lingula", "lobe": "lingula", "side": "left"},
+      {"id": "SO_D13", "text": "S5 (нижний язычковый)", "segment": "S5-lingula", "lobe": "lingula", "side": "left"}
+    ],
+    "so_e_navigation": [
+      {"id": "SO_E1", "text": "под контролем КТ", "method": "ct_guided"},
+      {"id": "SO_E2", "text": "CT-guided", "method": "ct_guided"},
+      {"id": "SO_E3", "text": "под рентген-контролем", "method": "fluoroscopy"},
+      {"id": "SO_E4", "text": "с использованием электромагнитной навигационной бронхоскопии", "method": "enb"},
+      {"id": "SO_E5", "text": "под ультразвуковым контролем (EBUS)", "method": "ebus"},
+      {"id": "SO_E6", "text": "без навигации", "method": "blind"}
+    ],
+    "so_f_lymph_node_station": [
+      {"id": "SO_F1", "text": "лимфоузел станции 4R (нижний паратрахеальный, справа)", "station": "4R"},
+      {"id": "SO_F2", "text": "лимфоузел станции 4L (нижний паратрахеальный, слева)", "station": "4L"},
+      {"id": "SO_F3", "text": "лимфоузел станции 7 (субкаринальный)", "station": "7"},
+      {"id": "SO_F4", "text": "лимфоузел станции 10R (правый главный бронх)", "station": "10R"},
+      {"id": "SO_F5", "text": "лимфоузел станции 11R (междолевой, справа)", "station": "11R"},
+      {"id": "SO_F6", "text": "лимфоузел станции 11L (междолевой, слева)", "station": "11L"}
+    ],
+    "so_g_clinical_context": [
+      {"id": "SO_G1", "text": "Клинические данные: объёмное образование лёгкого, требует морфологической верификации"},
+      {"id": "SO_G2", "text": "Клинические данные: периферический узел, выявлен при скрининговой КТ"},
+      {"id": "SO_G3", "text": "Клинические данные: центральная опухоль с эндобронхиальным компонентом"},
+      {"id": "SO_G4", "text": "Клинические данные: подозрение на новообразование лёгкого по данным КТ"},
+      {"id": "SO_G5", "text": "Клинические данные: лимфаденопатия средостения, стадирование"},
+      {"id": "SO_G6", "text": "Клинические данные: образование лёгкого на фоне курения (ИК > 30 пачка-лет)"}
+    ],
+    "so_h_introduction_templates": [
+      {"id": "SO_H1", "text": "Тип материала: {specimen_type}, {anatomic_location}", "use_when": "any"},
+      {"id": "SO_H2", "text": "Материал: {specimen_type} из {anatomic_location_genitive}", "use_when": "biopsy"},
+      {"id": "SO_H3", "text": "{specimen_type} ({anatomic_location})", "use_when": "any"},
+      {"id": "SO_H4", "text": "Поступил материал: {specimen_type}, локализация — {anatomic_location}", "use_when": "any"},
+      {"id": "SO_H5", "text": "Тип операционного материала: {specimen_type}", "use_when": "resection"}
+    ],
+    "generation_rules": {
+      "specimen_type_distribution": {
+        "biopsy": 0.55,
+        "cytology_plus": 0.10,
+        "resection": 0.35
+      },
+      "side_probability": 0.95,
+      "lobe_probability": 0.90,
+      "segment_probability": 0.55,
+      "navigation_probability_when_biopsy": 0.70,
+      "lymph_node_when_ebus": 1.0,
+      "clinical_context_probability": 0.50,
+      "navigation_mapping": {
+        "core-биопсия": ["ct_guided", "ct_guided", "fluoroscopy"],
+        "трансбронхиальная биопсия": ["fluoroscopy", "enb", "blind"],
+        "криобиопсия": ["fluoroscopy", "blind"],
+        "щипцовая биопсия": ["blind"],
+        "EBUS-TBNA": ["ebus"]
+      }
+    }
+  }
+}

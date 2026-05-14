@@ -1,0 +1,170 @@
+{
+  "tnm_staging": {
+    "ts_a_section_header": [
+      {"id": "TS_A1", "text": "СТАДИРОВАНИЕ TNM (9-е издание, 2025)"},
+      {"id": "TS_A2", "text": "Стадирование по TNM (IASLC, 9-е издание)"},
+      {"id": "TS_A3", "text": "TNM-стадирование (9-я редакция, 2025)"}
+    ],
+    "ts_b_assessment_basis": [
+      {"id": "TS_B1", "text": "Оценка выполнена на основании КТ грудной клетки, ПЭТ/КТ"},
+      {"id": "TS_B2", "text": "Стадирование на основании КТ ОГК с в/в контрастированием и ПЭТ/КТ с 18F-ФДГ"},
+      {"id": "TS_B3", "text": "По данным КТ грудной клетки и брюшной полости, ПЭТ/КТ"},
+      {"id": "TS_B4", "text": "Оценка проведена по результатам КТ ОГК, ПЭТ/КТ с 18F-ФДГ, МРТ головного мозга"},
+      {"id": "TS_B5", "text": "Стадирование по комплексу методов визуализации (КТ, ПЭТ/КТ, МРТ ГМ)"}
+    ],
+    "ts_c_t_categories": [
+      {"id": "TS_T_TIS", "code": "Tis", "size_range_mm": null,
+       "description": "Преинвазивный рак (carcinoma in situ)",
+       "criteria": "AIS ≤30 мм, исключительно лепидический рост"},
+      {"id": "TS_T_T1MI", "code": "T1mi", "size_range_mm": [0, 30],
+       "description": "Минимально инвазивная аденокарцинома",
+       "criteria": "MIA: ≤30 мм, инвазивный компонент ≤5 мм"},
+      {"id": "TS_T_T1A", "code": "T1a", "size_range_mm": [0, 10],
+       "description": "Опухоль ≤10 мм без инвазии висцеральной плевры и главного бронха"},
+      {"id": "TS_T_T1B", "code": "T1b", "size_range_mm": [11, 20],
+       "description": "Опухоль >10 мм, но ≤20 мм"},
+      {"id": "TS_T_T1C", "code": "T1c", "size_range_mm": [21, 30],
+       "description": "Опухоль >20 мм, но ≤30 мм"},
+      {"id": "TS_T_T2A", "code": "T2a", "size_range_mm": [31, 40],
+       "description": "Опухоль >30 мм, но ≤40 мм ИЛИ с инвазией висцеральной плевры/главного бронха/обструктивный ателектаз"},
+      {"id": "TS_T_T2B", "code": "T2b", "size_range_mm": [41, 50],
+       "description": "Опухоль >40 мм, но ≤50 мм"},
+      {"id": "TS_T_T3", "code": "T3", "size_range_mm": [51, 70],
+       "description": "Опухоль >50 мм, но ≤70 мм ИЛИ с инвазией грудной стенки/диафрагмального нерва/париетального перикарда ИЛИ отдельные опухолевые узлы в той же доле"},
+      {"id": "TS_T_T4", "code": "T4", "size_range_mm": [71, 200],
+       "description": "Опухоль >70 мм ИЛИ инвазия средостения, диафрагмы, сердца, крупных сосудов, трахеи, возвратного нерва, пищевода, тела позвонка, киля ИЛИ отдельные узлы в другой ипсилатеральной доле"}
+    ],
+    "ts_c_t_invasion_features": [
+      {"id": "TS_T_INV_VPL", "feature": "visceral_pleura", "text": "Опухоль прорастает в висцеральную плевру", "min_t_category": "T2a"},
+      {"id": "TS_T_INV_MB", "feature": "main_bronchus", "text": "Инвазия главного бронха без вовлечения киля", "min_t_category": "T2a"},
+      {"id": "TS_T_INV_ATEL", "feature": "atelectasis", "text": "Обструктивный ателектаз или пневмонит, распространяющийся на корень лёгкого", "min_t_category": "T2a"},
+      {"id": "TS_T_INV_CW", "feature": "chest_wall", "text": "Инвазия париетальной плевры/грудной стенки", "min_t_category": "T3"},
+      {"id": "TS_T_INV_PHRENIC", "feature": "phrenic_nerve", "text": "Вовлечение диафрагмального нерва", "min_t_category": "T3"},
+      {"id": "TS_T_INV_PERIC", "feature": "parietal_pericardium", "text": "Инвазия париетального перикарда", "min_t_category": "T3"},
+      {"id": "TS_T_INV_SAMEdotLOBE", "feature": "same_lobe_nodules", "text": "Отдельные опухолевые узлы в той же доле", "min_t_category": "T3"},
+      {"id": "TS_T_INV_MED", "feature": "mediastinum", "text": "Инвазия структур средостения", "min_t_category": "T4"},
+      {"id": "TS_T_INV_DIAPH", "feature": "diaphragm", "text": "Инвазия диафрагмы", "min_t_category": "T4"},
+      {"id": "TS_T_INV_HEART", "feature": "heart", "text": "Инвазия сердца", "min_t_category": "T4"},
+      {"id": "TS_T_INV_VESSELS", "feature": "great_vessels", "text": "Инвазия крупных сосудов (аорта, верхняя полая вена)", "min_t_category": "T4"},
+      {"id": "TS_T_INV_OTHERdotLOBE", "feature": "other_ipsi_lobe", "text": "Отдельные опухолевые узлы в другой ипсилатеральной доле", "min_t_category": "T4"}
+    ],
+    "ts_d_n_categories": [
+      {"id": "TS_N_N0", "code": "N0", "description": "Нет метастазов в регионарных лимфоузлах"},
+      {"id": "TS_N_N1", "code": "N1", "description": "Метастазы в ипсилатеральных перибронхиальных и/или прикорневых лимфоузлах (станции 10–14)",
+       "stations": ["10R", "10L", "11R", "11L", "12R", "12L", "13", "14"]},
+      {"id": "TS_N_N2A", "code": "N2a", "description": "Метастазы в одной станции ипсилатеральных медиастинальных или субкаринальных лимфоузлов (single-station N2)",
+       "stations": ["2R", "2L", "3", "4R", "4L", "5", "6", "7", "8", "9"], "single_station": true},
+      {"id": "TS_N_N2B", "code": "N2b", "description": "Метастазы в нескольких станциях ипсилатеральных медиастинальных лимфоузлов (multi-station N2)",
+       "stations": ["2R", "2L", "3", "4R", "4L", "5", "6", "7", "8", "9"], "single_station": false},
+      {"id": "TS_N_N3", "code": "N3", "description": "Метастазы в контралатеральных медиастинальных/прикорневых лимфоузлах или надключичных/скаленных"}
+    ],
+    "ts_d_lymph_node_stations": [
+      {"station": "2R", "name": "верхние паратрахеальные справа"},
+      {"station": "2L", "name": "верхние паратрахеальные слева"},
+      {"station": "4R", "name": "нижние паратрахеальные справа"},
+      {"station": "4L", "name": "нижние паратрахеальные слева"},
+      {"station": "5", "name": "субаортальные (аортопульмонального окна)"},
+      {"station": "6", "name": "парааортальные"},
+      {"station": "7", "name": "субкаринальные"},
+      {"station": "8", "name": "параэзофагеальные"},
+      {"station": "10R", "name": "корня правого лёгкого"},
+      {"station": "10L", "name": "корня левого лёгкого"},
+      {"station": "11R", "name": "междолевые справа"},
+      {"station": "11L", "name": "междолевые слева"}
+    ],
+    "ts_e_m_categories": [
+      {"id": "TS_M_M0", "code": "M0", "description": "Отдалённых метастазов не выявлено"},
+      {"id": "TS_M_M1A", "code": "M1a", "description": "Отдельные опухолевые узлы в контралатеральном лёгком; диссеминация по плевре/перикарду; злокачественный плевральный/перикардиальный выпот"},
+      {"id": "TS_M_M1B", "code": "M1b", "description": "Единственный экстраторакальный метастаз в одном органе"},
+      {"id": "TS_M_M1C1", "code": "M1c1", "description": "Множественные экстраторакальные метастазы в одном органе"},
+      {"id": "TS_M_M1C2", "code": "M1c2", "description": "Множественные экстраторакальные метастазы в нескольких органах"}
+    ],
+    "ts_e_metastatic_sites": [
+      {"id": "TS_MET_BRAIN", "site": "brain", "text": "головной мозг"},
+      {"id": "TS_MET_BONE", "site": "bone", "text": "кости"},
+      {"id": "TS_MET_LIVER", "site": "liver", "text": "печень"},
+      {"id": "TS_MET_ADRENAL", "site": "adrenal", "text": "надпочечники"},
+      {"id": "TS_MET_LUNG_CONTRA", "site": "contralateral_lung", "text": "контралатеральное лёгкое"},
+      {"id": "TS_MET_PLEURA", "site": "pleura", "text": "плевра (карциноматоз)"},
+      {"id": "TS_MET_PERICARDIUM", "site": "pericardium", "text": "перикард"}
+    ],
+    "ts_f_stage_table_tnm9": {
+      "Tis_N0_M0": "0",
+      "T1mi_N0_M0": "IA1",
+      "T1a_N0_M0": "IA1",
+      "T1b_N0_M0": "IA2",
+      "T1c_N0_M0": "IA3",
+      "T2a_N0_M0": "IB",
+      "T2b_N0_M0": "IIA",
+      "T1a_N1_M0": "IIA",
+      "T1b_N1_M0": "IIA",
+      "T1c_N1_M0": "IIA",
+      "T2a_N1_M0": "IIB",
+      "T2b_N1_M0": "IIB",
+      "T3_N0_M0": "IIB",
+      "T1a_N2a_M0": "IIB",
+      "T1b_N2a_M0": "IIB",
+      "T1c_N2a_M0": "IIB",
+      "T2a_N2a_M0": "IIIA",
+      "T2b_N2a_M0": "IIIA",
+      "T3_N1_M0": "IIIA",
+      "T3_N2a_M0": "IIIA",
+      "T4_N0_M0": "IIIA",
+      "T4_N1_M0": "IIIA",
+      "T1a_N2b_M0": "IIIA",
+      "T1b_N2b_M0": "IIIA",
+      "T1c_N2b_M0": "IIIA",
+      "T2a_N2b_M0": "IIIB",
+      "T2b_N2b_M0": "IIIB",
+      "T3_N2b_M0": "IIIB",
+      "T4_N2a_M0": "IIIB",
+      "T4_N2b_M0": "IIIB",
+      "AnyT_N3_M0": "IIIC",
+      "AnyT_AnyN_M1a": "IVA",
+      "AnyT_AnyN_M1b": "IVA",
+      "AnyT_AnyN_M1c1": "IVB",
+      "AnyT_AnyN_M1c2": "IVB"
+    },
+    "ts_g_lymph_node_detail_format": [
+      {"id": "TS_G1", "template": "Станция {station} ({name}) — {size} мм, SUV {suv}"},
+      {"id": "TS_G2", "template": "ЛУ станции {station} ({name}): {size} мм, SUVmax {suv}"},
+      {"id": "TS_G3", "template": "{name}, станция {station} — увеличение до {size} мм, SUV {suv}"}
+    ],
+    "ts_h_summary_templates": [
+      {"id": "TS_H1", "template": "АНАТОМИЧЕСКАЯ СТАДИЯ (TNM-9): {stage} ({t} {n} {m})"},
+      {"id": "TS_H2", "template": "Итоговая стадия по TNM-9: {stage} ({t}{n}{m})"},
+      {"id": "TS_H3", "template": "Стадия: {stage} (TNM-9: {t} {n} {m})"}
+    ],
+    "generation_rules": {
+      "applicable_to_diagnosis": ["D1", "D2", "D3", "D4", "D5", "D6", "D7"],
+      "t_distribution": {
+        "T1a": 0.06, "T1b": 0.10, "T1c": 0.12,
+        "T2a": 0.18, "T2b": 0.14,
+        "T3": 0.18, "T4": 0.18,
+        "T1mi": 0.02, "Tis": 0.02
+      },
+      "n_distribution_by_t": {
+        "early": {"N0": 0.75, "N1": 0.15, "N2a": 0.07, "N2b": 0.02, "N3": 0.01},
+        "intermediate": {"N0": 0.40, "N1": 0.25, "N2a": 0.15, "N2b": 0.12, "N3": 0.08},
+        "advanced": {"N0": 0.15, "N1": 0.15, "N2a": 0.20, "N2b": 0.25, "N3": 0.25}
+      },
+      "t_category_groups": {
+        "early": ["T1a", "T1b", "T1c", "T1mi", "Tis"],
+        "intermediate": ["T2a", "T2b"],
+        "advanced": ["T3", "T4"]
+      },
+      "m_distribution": {
+        "M0": 0.65, "M1a": 0.10, "M1b": 0.08, "M1c1": 0.10, "M1c2": 0.07
+      },
+      "metastatic_sites_distribution": {
+        "brain": 0.20, "bone": 0.25, "liver": 0.15, "adrenal": 0.15,
+        "contralateral_lung": 0.10, "pleura": 0.10, "pericardium": 0.05
+      },
+      "lymph_node_size_range_mm": [10, 30],
+      "lymph_node_suv_range": [3.0, 15.0],
+      "lymph_node_detail_probability": 0.85,
+      "invasion_feature_probability": 0.4,
+      "assessment_basis_probability": 0.9
+    }
+  }
+}

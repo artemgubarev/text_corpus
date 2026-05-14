@@ -1,0 +1,95 @@
+{
+  "mitosis_necrosis": {
+    "mn_a_section_header": [
+      {"id": "MN_A1", "text": "Пролиферативная активность и некроз:"},
+      {"id": "MN_A2", "text": "Митотическая активность и некроз:"},
+      {"id": "MN_A3", "text": "Дополнительные параметры:"}
+    ],
+    "mn_b_mitotic_count_format": [
+      {"id": "MN_B1", "template": "Митотическая активность: {count} митозов на 2 мм²", "unit": "per_2mm2"},
+      {"id": "MN_B2", "template": "Митозы: {count} на 2 мм² (по рекомендациям IASLC 2020)", "unit": "per_2mm2"},
+      {"id": "MN_B3", "template": "Митотический индекс: {count} в 10 полях зрения большого увеличения (ПЗБМ)", "unit": "per_10hpf"},
+      {"id": "MN_B4", "template": "Подсчёт митозов: {count}/10 ПЗБМ", "unit": "per_10hpf"},
+      {"id": "MN_B5", "template": "Митотическая активность {count} митозов на 10 HPF", "unit": "per_10hpf"}
+    ],
+    "mn_c_atypical_mitoses": [
+      {"id": "MN_C1", "text": "атипичные митотические фигуры не определяются"},
+      {"id": "MN_C2", "text": "встречаются единичные атипичные митозы"},
+      {"id": "MN_C3", "text": "часто определяются атипичные митотические фигуры (трёхполюсные, кольцевидные)"},
+      {"id": "MN_C4", "text": "атипичные митозы — выраженная часть митотической активности"}
+    ],
+    "mn_d_proliferation_qualitative": [
+      {"id": "MN_D1", "level": "low", "text": "Пролиферативная активность низкая"},
+      {"id": "MN_D2", "level": "intermediate", "text": "Пролиферативная активность умеренная"},
+      {"id": "MN_D3", "level": "high", "text": "Пролиферативная активность высокая"},
+      {"id": "MN_D4", "level": "very_high", "text": "Пролиферативная активность резко повышена"}
+    ],
+    "mn_e_necrosis_extent": [
+      {"id": "MN_E1", "extent": "absent", "text": "Опухолевый некроз не выявлен", "percent_range": [0, 0]},
+      {"id": "MN_E2", "extent": "focal", "text": "Очаговый опухолевый некроз (<10% площади опухоли)", "percent_range": [1, 9]},
+      {"id": "MN_E3", "extent": "moderate", "text": "Очаги некроза занимают около {percent}% площади среза", "percent_range": [10, 30], "uses_percent": true},
+      {"id": "MN_E4", "extent": "extensive", "text": "Обширные поля коагуляционного некроза (>50% опухоли)", "percent_range": [50, 80]},
+      {"id": "MN_E5", "extent": "extensive", "text": "Некроз занимает {percent}% площади опухоли — преобладающий компонент", "percent_range": [40, 85], "uses_percent": true},
+      {"id": "MN_E6", "extent": "punctate", "text": "Точечные очаги некроза (punctate necrosis)", "percent_range": [1, 5]}
+    ],
+    "mn_f_necrosis_type": [
+      {"id": "MN_F1", "type": "coagulative", "text": "коагуляционного типа"},
+      {"id": "MN_F2", "type": "punctate", "text": "точечный (punctate)", "typical_for": "small_cell"},
+      {"id": "MN_F3", "type": "geographic", "text": "географический"},
+      {"id": "MN_F4", "type": "comedo", "text": "комедо-некроз (с центральной локализацией в комплексах)", "typical_for": "high_grade"}
+    ],
+    "mn_g_ki67_format": [
+      {"id": "MN_G1", "template": "Ki-67 (MIB-1): индекс пролиферации ~{percent}%"},
+      {"id": "MN_G2", "template": "Индекс пролиферативной активности Ki-67: {percent}%"},
+      {"id": "MN_G3", "template": "Ki-67: {percent}% (по «горячим точкам»)"},
+      {"id": "MN_G4", "template": "Ki-67 LI = {percent}%"}
+    ],
+    "generation_rules": {
+      "mitosis_ranges_by_diagnosis": {
+        "D1_G1": [0, 2],
+        "D1_G2": [3, 9],
+        "D1_G3": [10, 30],
+        "D2_G1": [0, 3],
+        "D2_G2": [4, 10],
+        "D2_G3": [10, 35],
+        "D3": [10, 40],
+        "D6": [60, 200],
+        "D8": [0, 2],
+        "D9": [2, 10],
+        "default": [3, 12]
+      },
+      "necrosis_distribution_by_diagnosis": {
+        "D1_G1": {"absent": 0.85, "focal": 0.15},
+        "D1_G2": {"absent": 0.55, "focal": 0.30, "moderate": 0.15},
+        "D1_G3": {"absent": 0.15, "focal": 0.25, "moderate": 0.35, "extensive": 0.25},
+        "D2": {"absent": 0.20, "focal": 0.25, "moderate": 0.30, "extensive": 0.25},
+        "D3": {"absent": 0.10, "moderate": 0.40, "extensive": 0.50},
+        "D6": {"punctate": 0.30, "moderate": 0.30, "extensive": 0.40},
+        "D8": {"absent": 1.00},
+        "D9": {"absent": 0.60, "focal": 0.40},
+        "default": {"absent": 0.40, "focal": 0.30, "moderate": 0.20, "extensive": 0.10}
+      },
+      "ki67_ranges_by_diagnosis_grade": {
+        "D1_G1": [1, 10],
+        "D1_G2": [10, 30],
+        "D1_G3": [30, 80],
+        "D2_G2": [20, 50],
+        "D2_G3": [40, 90],
+        "D6": [70, 100],
+        "D8": [1, 3],
+        "D9": [3, 20],
+        "default": [10, 40]
+      },
+      "atypical_mitoses_probability_by_grade": {
+        "G1": 0.05,
+        "G2": 0.30,
+        "G3": 0.70,
+        "GX": 0.20
+      },
+      "ki67_inclusion_probability": 0.85,
+      "necrosis_type_inclusion_probability": 0.50,
+      "qualitative_proliferation_probability": 0.40,
+      "section_header_probability": 0.6
+    }
+  }
+}

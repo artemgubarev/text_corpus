@@ -1,0 +1,119 @@
+{
+  "cytology": {
+    "cy_a_section_intro": [
+      {"id": "CY_A1", "text": "Цитологические характеристики опухолевых клеток:"},
+      {"id": "CY_A2", "text": "Клеточная морфология:"},
+      {"id": "CY_A3", "text": "Клетки опухоли:"},
+      {"id": "CY_A4", "text": "Цитология:"}
+    ],
+    "cy_b_cell_size": [
+      {"id": "CY_B1", "size_class": "small", "text": "мелких размеров", "weight_by_diagnosis": {"D6": 0.95, "D8": 0.5, "default": 0.05}},
+      {"id": "CY_B2", "size_class": "medium", "text": "средних размеров", "weight_by_diagnosis": {"default": 0.40, "D6": 0.05}},
+      {"id": "CY_B3", "size_class": "large", "text": "крупных размеров", "weight_by_diagnosis": {"default": 0.40, "D3": 0.85, "D6": 0.0}},
+      {"id": "CY_B4", "size_class": "varying", "text": "варьирующих размеров", "weight_by_diagnosis": {"default": 0.15}}
+    ],
+    "cy_c_cell_shape": [
+      {"id": "CY_C1", "text": "полигональной формы"},
+      {"id": "CY_C2", "text": "кубоидальной формы"},
+      {"id": "CY_C3", "text": "цилиндрической формы"},
+      {"id": "CY_C4", "text": "округлой и овальной формы"},
+      {"id": "CY_C5", "text": "веретеновидной формы"},
+      {"id": "CY_C6", "text": "плеоморфные, неправильной формы"},
+      {"id": "CY_C7", "text": "вытянутые, плоского эпителия"}
+    ],
+    "cy_d_nucleus_size": [
+      {"id": "CY_D1", "text": "ядра мелкие"},
+      {"id": "CY_D2", "text": "ядра увеличенные"},
+      {"id": "CY_D3", "text": "ядра крупные, в 2–3 раза превышают размер ядра лимфоцита"},
+      {"id": "CY_D4", "text": "ядра варьирующих размеров (анизокариоз)"}
+    ],
+    "cy_e_nucleus_shape": [
+      {"id": "CY_E1", "text": "округлой формы"},
+      {"id": "CY_E2", "text": "овальной формы"},
+      {"id": "CY_E3", "text": "неправильной формы, с глубокими вырезками и складками мембраны"},
+      {"id": "CY_E4", "text": "угловатые, с заострёнными контурами"},
+      {"id": "CY_E5", "text": "вытянутой формы"}
+    ],
+    "cy_f_chromatin": [
+      {"id": "CY_F1", "text": "хроматин мелкодисперсный"},
+      {"id": "CY_F2", "text": "хроматин везикулярный, с просветлением центральной части ядра"},
+      {"id": "CY_F3", "text": "хроматин грубо-глыбчатый"},
+      {"id": "CY_F4", "text": "хроматин гиперхромный, плотный"},
+      {"id": "CY_F5", "text": "хроматин «перец-соль» (salt-and-pepper) — характерен для нейроэндокринной дифференцировки", "marker_for": "neuroendocrine"},
+      {"id": "CY_F6", "text": "хроматин неравномерно распределён, с маргинацией"}
+    ],
+    "cy_g_nucleoli": [
+      {"id": "CY_G1", "text": "ядрышки не визуализируются"},
+      {"id": "CY_G2", "text": "ядрышки мелкие, точечные"},
+      {"id": "CY_G3", "text": "ядрышки заметные, единичные"},
+      {"id": "CY_G4", "text": "ядрышки крупные, эозинофильные"},
+      {"id": "CY_G5", "text": "ядрышки множественные, неправильной формы"},
+      {"id": "CY_G6", "text": "ядрышки макронуклеолярного типа (>5 мкм)"}
+    ],
+    "cy_h_nc_ratio": [
+      {"id": "CY_H1", "ratio": "normal", "text": "ядерно-цитоплазматическое соотношение в норме"},
+      {"id": "CY_H2", "ratio": "elevated", "text": "ядерно-цитоплазматическое соотношение повышено"},
+      {"id": "CY_H3", "ratio": "high", "text": "ядерно-цитоплазматическое соотношение резко повышено"},
+      {"id": "CY_H4", "ratio": "very_high", "text": "ядерно-цитоплазматическое соотношение приближается к 1:1 (ядра занимают почти всю клетку)"}
+    ],
+    "cy_i_cytoplasm_amount": [
+      {"id": "CY_I1", "amount": "scant", "text": "цитоплазма скудная"},
+      {"id": "CY_I2", "amount": "moderate", "text": "цитоплазма умеренная по объёму"},
+      {"id": "CY_I3", "amount": "abundant", "text": "цитоплазма обильная"}
+    ],
+    "cy_j_cytoplasm_quality": [
+      {"id": "CY_J1", "text": "эозинофильная"},
+      {"id": "CY_J2", "text": "базофильная"},
+      {"id": "CY_J3", "text": "светлая, оптически пустая"},
+      {"id": "CY_J4", "text": "мелкозернистая"},
+      {"id": "CY_J5", "text": "с признаками муцинообразования (вакуолизация)", "marker_for": "adenocarcinoma"},
+      {"id": "CY_J6", "text": "с эозинофильными гранулами"},
+      {"id": "CY_J7", "text": "с кератинизацией", "marker_for": "squamous"}
+    ],
+    "cy_k_pleomorphism": [
+      {"id": "CY_K1", "grade": "minimal", "text": "Клеточный полиморфизм минимальный, клетки однородные"},
+      {"id": "CY_K2", "grade": "mild", "text": "Полиморфизм слабо выражен"},
+      {"id": "CY_K3", "grade": "moderate", "text": "Клеточный и ядерный полиморфизм умеренный"},
+      {"id": "CY_K4", "grade": "marked", "text": "Полиморфизм выраженный, с многоядерными клетками и причудливыми ядрами"},
+      {"id": "CY_K5", "grade": "marked", "text": "Резко выраженная анизо- и пойкилокариоз, встречаются гигантские клетки"}
+    ],
+    "cy_l_special_features": [
+      {"id": "CY_L1", "text": "Определяются межклеточные мостики (десмосомы)", "marker_for": "squamous"},
+      {"id": "CY_L2", "text": "Внутрицитоплазматическое ороговение единичных клеток (dyskeratosis)", "marker_for": "squamous"},
+      {"id": "CY_L3", "text": "Внутриядерные псевдовключения (intranuclear pseudoinclusions)", "marker_for": "adenocarcinoma"},
+      {"id": "CY_L4", "text": "Ядерные борозды (nuclear grooves)", "marker_for": "adenocarcinoma"},
+      {"id": "CY_L5", "text": "Многоядерные опухолевые гигантские клетки", "marker_for": "any"},
+      {"id": "CY_L6", "text": "Феномен «голых ядер» (naked nuclei) — типично для мелкоклеточного рака", "marker_for": "small_cell"},
+      {"id": "CY_L7", "text": "Crush-артефакты (раздавленные ядра с растяжкой ДНК)", "marker_for": "small_cell"}
+    ],
+    "generation_rules": {
+      "pleomorphism_by_grade": {
+        "G1": ["minimal", "mild"],
+        "G2": ["mild", "moderate"],
+        "G3": ["moderate", "marked"],
+        "GX": ["mild", "moderate"]
+      },
+      "nc_ratio_by_grade": {
+        "G1": ["normal", "elevated"],
+        "G2": ["elevated"],
+        "G3": ["high", "very_high"],
+        "GX": ["elevated", "high"]
+      },
+      "nucleoli_by_grade": {
+        "G1": ["CY_G1", "CY_G2"],
+        "G2": ["CY_G2", "CY_G3"],
+        "G3": ["CY_G4", "CY_G5", "CY_G6"]
+      },
+      "special_features_probability": 0.4,
+      "max_special_features": 2,
+      "section_intro_probability": 0.7,
+      "diagnosis_to_cytology_hint": {
+        "D1": {"shape": ["CY_C2", "CY_C3", "CY_C4"], "cytoplasm_quality": ["CY_J1", "CY_J3", "CY_J5"]},
+        "D2": {"shape": ["CY_C1", "CY_C6"], "cytoplasm_quality": ["CY_J1", "CY_J7"]},
+        "D6": {"shape": ["CY_C4", "CY_C5"], "cytoplasm_quality": ["CY_J2"], "force_nc_ratio": "very_high"},
+        "D8": {"shape": ["CY_C4"], "cytoplasm_quality": ["CY_J4", "CY_J6"]},
+        "D9": {"shape": ["CY_C4"], "cytoplasm_quality": ["CY_J4", "CY_J6"]}
+      }
+    }
+  }
+}

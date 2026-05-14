@@ -1,0 +1,86 @@
+{
+  "functional_status": {
+    "fs_a_section_header": [
+      {"id": "FS_A1", "text": "ФУНКЦИОНАЛЬНЫЙ СТАТУС"},
+      {"id": "FS_A2", "text": "Оценка функционального статуса пациента"},
+      {"id": "FS_A3", "text": "Performance Status"}
+    ],
+    "fs_b_ecog_scale": [
+      {"id": "FS_ECOG_0", "ecog": 0, "karnofsky": [90, 100], "label": "PS 0",
+       "interpretation": "Полностью активен, способен выполнять всю предзаболеваниевую активность без ограничений"},
+      {"id": "FS_ECOG_1", "ecog": 1, "karnofsky": [70, 80], "label": "PS 1",
+       "interpretation": "Ограничение в тяжёлой физической работе, но амбулаторен и способен к лёгкой/сидячей работе"},
+      {"id": "FS_ECOG_2", "ecog": 2, "karnofsky": [50, 60], "label": "PS 2",
+       "interpretation": "Амбулаторен и способен к самообслуживанию, но не может работать. Проводит в постели <50% дневного времени"},
+      {"id": "FS_ECOG_3", "ecog": 3, "karnofsky": [30, 40], "label": "PS 3",
+       "interpretation": "Способен лишь к ограниченному самообслуживанию. Проводит в постели или кресле >50% времени"},
+      {"id": "FS_ECOG_4", "ecog": 4, "karnofsky": [10, 20], "label": "PS 4",
+       "interpretation": "Полностью дееспособен. Не способен к самообслуживанию. Постоянно прикован к постели"}
+    ],
+    "fs_c_ecog_format": [
+      {"id": "FS_C1", "template": "Оценка по ECOG: PS {ecog}"},
+      {"id": "FS_C2", "template": "ECOG Performance Status: {ecog}"},
+      {"id": "FS_C3", "template": "ECOG PS: {ecog}"},
+      {"id": "FS_C4", "template": "Функциональный статус (ECOG): {ecog}"}
+    ],
+    "fs_d_karnofsky_format": [
+      {"id": "FS_D1", "template": "Эквивалент по Карновскому: {karnofsky}%"},
+      {"id": "FS_D2", "template": "Шкала Карновского: {karnofsky}%"},
+      {"id": "FS_D3", "template": "Karnofsky Performance Status: {karnofsky}"}
+    ],
+    "fs_e_ecog_interpretation_extended": {
+      "0": [
+        "Пациент полностью активен, ведёт обычный образ жизни без ограничений.",
+        "Способен к выполнению любой предзаболеваниевой активности.",
+        "Симптомы заболевания отсутствуют или минимальны."
+      ],
+      "1": [
+        "Пациент амбулаторен. Отмечается ограничение в тяжёлой физической работе, но способен к лёгкой/сидячей работе.",
+        "Полностью себя обслуживает.",
+        "Проводит в бодрствовании >50% дневного времени.",
+        "Лёгкие симптомы, не препятствующие повседневной активности."
+      ],
+      "2": [
+        "Пациент амбулаторен, способен к самообслуживанию.",
+        "Не способен к выполнению производственной работы.",
+        "Проводит в бодрствовании более 50% времени.",
+        "Симптомы заболевания умеренно выражены."
+      ],
+      "3": [
+        "Способность к самообслуживанию ограничена.",
+        "Проводит в постели или кресле более 50% дневного времени.",
+        "Нуждается в помощи в повседневной активности.",
+        "Симптомы заболевания значительно выражены."
+      ],
+      "4": [
+        "Полностью прикован к постели.",
+        "Не способен к самообслуживанию.",
+        "Нуждается в постоянном уходе.",
+        "Терминальная стадия заболевания."
+      ]
+    },
+    "fs_f_treatment_eligibility": {
+      "0": {"chemotherapy": true, "immunotherapy": true, "targeted_therapy": true, "surgery": true, "radiotherapy": true,
+            "comment": "Подходит для всех видов лечения"},
+      "1": {"chemotherapy": true, "immunotherapy": true, "targeted_therapy": true, "surgery": true, "radiotherapy": true,
+            "comment": "Подходит для всех видов лечения, включая агрессивные комбинации"},
+      "2": {"chemotherapy": "limited", "immunotherapy": true, "targeted_therapy": true, "surgery": "case_by_case", "radiotherapy": true,
+            "comment": "Возможна стандартная терапия с осторожностью; рассмотреть монохимиотерапию вместо комбинированной"},
+      "3": {"chemotherapy": false, "immunotherapy": "limited", "targeted_therapy": true, "surgery": false, "radiotherapy": "palliative",
+            "comment": "Только таргетная терапия (если возможна) или паллиативное лечение"},
+      "4": {"chemotherapy": false, "immunotherapy": false, "targeted_therapy": false, "surgery": false, "radiotherapy": "palliative",
+            "comment": "Только симптоматическое и паллиативное лечение"}
+    },
+    "generation_rules": {
+      "ecog_distribution": {
+        "0": 0.20, "1": 0.45, "2": 0.20, "3": 0.10, "4": 0.05
+      },
+      "interpretation_lines_count": {
+        "min": 2, "max": 4
+      },
+      "interpretation_probability": 0.85,
+      "karnofsky_inclusion_probability": 0.75,
+      "header_probability": 0.90
+    }
+  }
+}

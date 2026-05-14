@@ -1,0 +1,102 @@
+{
+  "stroma_inflammation": {
+    "si_a_section_header": [
+      {"id": "SI_A1", "text": "Строма и воспалительный инфильтрат:"},
+      {"id": "SI_A2", "text": "Стромальная реакция:"},
+      {"id": "SI_A3", "text": "Микроокружение опухоли:"}
+    ],
+    "si_b_stroma_type": [
+      {"id": "SI_B1", "stroma_type": "desmoplastic", "text": "Строма десмопластическая, с выраженной коллагенизацией"},
+      {"id": "SI_B2", "stroma_type": "desmoplastic", "text": "Выраженная десмопластическая стромальная реакция вокруг опухолевых комплексов"},
+      {"id": "SI_B3", "stroma_type": "fibrous", "text": "Строма фиброзная, представлена зрелой соединительной тканью"},
+      {"id": "SI_B4", "stroma_type": "hyalinized", "text": "Строма гиалинизированная, с очагами хрящевой/костной метаплазии"},
+      {"id": "SI_B5", "stroma_type": "myxoid", "text": "Строма с миксоидным компонентом"},
+      {"id": "SI_B6", "stroma_type": "minimal", "text": "Строма скудная, опухолевые клетки прилежат непосредственно друг к другу"},
+      {"id": "SI_B7", "stroma_type": "minimal", "text": "Стромальная реакция минимальная"},
+      {"id": "SI_B8", "stroma_type": "scirrhous", "text": "Скиррозный (склеротический) тип стромы с компрессией опухолевых комплексов"}
+    ],
+    "si_c_inflammation_density": [
+      {"id": "SI_C1", "density": "absent", "text": "Воспалительная инфильтрация отсутствует"},
+      {"id": "SI_C2", "density": "sparse", "text": "Скудная воспалительная инфильтрация"},
+      {"id": "SI_C3", "density": "moderate", "text": "Умеренно выраженная воспалительная инфильтрация"},
+      {"id": "SI_C4", "density": "dense", "text": "Выраженная воспалительная инфильтрация"},
+      {"id": "SI_C5", "density": "dense", "text": "Густой воспалительный инфильтрат, местами замещающий опухолевую ткань"}
+    ],
+    "si_d_inflammation_pattern": [
+      {"id": "SI_D1", "pattern": "peritumoral", "text": "перитуморальная (по периферии опухоли)"},
+      {"id": "SI_D2", "pattern": "intratumoral", "text": "интратуморальная (среди опухолевых комплексов)"},
+      {"id": "SI_D3", "pattern": "diffuse", "text": "диффузная, охватывает всю площадь опухоли"},
+      {"id": "SI_D4", "pattern": "lymphoid_aggregates", "text": "в виде лимфоидных фолликулов и агрегатов (третичные лимфоидные структуры)"},
+      {"id": "SI_D5", "pattern": "stromal", "text": "преимущественно в строме"}
+    ],
+    "si_e_inflammation_composition": [
+      {"id": "SI_E1", "text": "представлен лимфоцитами"},
+      {"id": "SI_E2", "text": "лимфоплазмоцитарной природы"},
+      {"id": "SI_E3", "text": "смешанного состава: лимфоциты, плазматические клетки, единичные эозинофилы"},
+      {"id": "SI_E4", "text": "с примесью нейтрофилов (нейтрофильно-лейкоцитарная инфильтрация)"},
+      {"id": "SI_E5", "text": "эозинофильного состава"},
+      {"id": "SI_E6", "text": "представлен макрофагами и многоядерными гигантскими клетками типа инородных тел"},
+      {"id": "SI_E7", "text": "с формированием неказеозных эпителиоидно-клеточных гранулём"}
+    ],
+    "si_f_til_assessment": [
+      {"id": "SI_F1", "template": "Опухоль-инфильтрирующие лимфоциты (TIL): отсутствуют (0%)"},
+      {"id": "SI_F2", "template": "TIL: низкая степень — {percent}%"},
+      {"id": "SI_F3", "template": "TIL: умеренная — {percent}%"},
+      {"id": "SI_F4", "template": "TIL: высокая (brisk инфильтрация) — {percent}%"},
+      {"id": "SI_F5", "template": "Опухоль-инфильтрирующие лимфоциты: ~{percent}% стромы"}
+    ],
+    "si_g_associated_changes": [
+      {"id": "SI_G1", "text": "В прилежащей лёгочной паренхиме — обструктивный пневмонит с организацией"},
+      {"id": "SI_G2", "text": "В перитуморальной зоне — участки эмфизематозной перестройки"},
+      {"id": "SI_G3", "text": "В прилежащей паренхиме — очаги интерстициального фиброза и реактивной гиперплазии пневмоцитов"},
+      {"id": "SI_G4", "text": "В перитуморальной ткани — отложения карбонового пигмента (антракоз)"},
+      {"id": "SI_G5", "text": "Признаков лимфангита carcinomatosa в окружающей паренхиме не выявлено"},
+      {"id": "SI_G6", "text": "В прилежащей слизистой бронха — плоскоклеточная метаплазия с дисплазией"}
+    ],
+    "si_h_vascular_features": [
+      {"id": "SI_H1", "text": "Сосудистый компонент стромы умеренно развит"},
+      {"id": "SI_H2", "text": "Выраженная неоваскуляризация (ангиогенез) в строме опухоли"},
+      {"id": "SI_H3", "text": "Сосудистый рисунок стромы скудный"},
+      {"id": "SI_H4", "text": "Определяются тонкостенные сосуды синусоидного типа (характерно для нейроэндокринной опухоли)", "marker_for": "neuroendocrine"}
+    ],
+    "generation_rules": {
+      "stroma_type_by_diagnosis": {
+        "D1": ["desmoplastic", "fibrous", "scirrhous", "hyalinized"],
+        "D2": ["desmoplastic", "fibrous", "minimal"],
+        "D3": ["minimal", "desmoplastic"],
+        "D4": ["desmoplastic", "fibrous"],
+        "D6": ["minimal"],
+        "D8": ["fibrous", "minimal"],
+        "D9": ["fibrous", "minimal"]
+      },
+      "til_range_by_diagnosis": {
+        "D1": [0, 60],
+        "D2": [5, 70],
+        "D3": [0, 40],
+        "D6": [0, 30],
+        "default": [0, 50]
+      },
+      "til_category_thresholds": {
+        "absent": [0, 1],
+        "low": [1, 10],
+        "moderate": [10, 40],
+        "high": [40, 100]
+      },
+      "inflammation_density_distribution": {
+        "absent": 0.10,
+        "sparse": 0.30,
+        "moderate": 0.40,
+        "dense": 0.20
+      },
+      "til_inclusion_probability": 0.60,
+      "inflammation_pattern_probability": 0.70,
+      "inflammation_composition_probability": 0.55,
+      "associated_changes_probability": 0.40,
+      "vascular_features_probability": 0.25,
+      "section_header_probability": 0.50,
+      "granuloma_force_for_inflammatory_context": {
+        "trigger": "если выбран SI_E7 (гранулёмы) — пометить для дифдиагноза с инфекциями"
+      }
+    }
+  }
+}
