@@ -1,0 +1,264 @@
+{
+  "section_header": "Системная терапия.",
+  "decision_tree_comment": "Дерево решений по системной терапии. Учитывается: ECOG (PS≥3 блокирует комбинированную химию/IO), стадия, actionable драйверы, PD-L1, гистология, категория диагноза.",
+
+  "rules": [
+    {
+      "id": "SYS_PS4_CONTRA",
+      "priority": 100,
+      "condition": {"ecog": 4},
+      "text": "Системная противоопухолевая терапия противопоказана: функциональный статус ECOG 4. Любая цитотоксическая, иммуно- или таргетная терапия несовместима с состоянием пациента.",
+      "intent": "not_indicated_ps"
+    },
+    {
+      "id": "SYS_PS3_TKI_ONLY",
+      "priority": 98,
+      "condition": {"ecog": 3, "actionable_driver": true, "tki_eligible": true},
+      "text": "С учётом ECOG 3 системная химиотерапия и комбинированная химиоиммунотерапия противопоказаны. Возможна пероральная таргетная терапия с приемлемой переносимостью: {drug}. Контроль ECOG и КТ каждые 4-6 недель. При улучшении до PS ≤2 — пересмотр тактики.",
+      "intent": "targeted_palliative"
+    },
+    {
+      "id": "SYS_PS3_CONTRA",
+      "priority": 97,
+      "condition": {"ecog": 3},
+      "text": "Системная противоопухолевая терапия не показана в связи с ECOG 3 и отсутствием actionable таргетов. Возможна повторная оценка тактики при улучшении функционального статуса.",
+      "intent": "not_indicated_ps"
+    },
+
+    {
+      "id": "SYS_AIS",
+      "priority": 90,
+      "condition": {"t_code": "Tis"},
+      "text": "AIS — системная адъювантная терапия не показана: хирургическое лечение обеспечивает радикальный контроль (5-летняя выживаемость близка к 100%).",
+      "intent": "not_indicated"
+    },
+    {
+      "id": "SYS_MIA",
+      "priority": 89,
+      "condition": {"t_code": "T1mi"},
+      "text": "MIA — системная адъювантная терапия не показана при R0-резекции.",
+      "intent": "not_indicated"
+    },
+
+    {
+      "id": "SYS_NSCLC_IA_NONE",
+      "priority": 85,
+      "condition": {"category": "NSCLC", "stage_in": ["IA1", "IA2", "IA3"]},
+      "text": "Стадия IA. Адъювантная химиотерапия не показана при R0 и pN0. При выявлении EGFR ex19 del/L858R после резекции — рассмотреть адъювантный осимертиниб 3 года (ADAURA, IA3 при R+ или pT≥1c).",
+      "intent": "no_adjuvant"
+    },
+    {
+      "id": "SYS_NSCLC_IB",
+      "priority": 84,
+      "condition": {"category": "NSCLC", "stage": ["IB"], "ecog_max": 2},
+      "text": "Стадия IB. Адъювантная химиотерапия (4 цикла платинового дублета — цисплатин + винорелбин/пеметрексед) рассматривается при размере опухоли >4 см или наличии факторов высокого риска (LVI+, висцеральная плевра PL1-2, G3, low-differentiation). При EGFR ex19 del/L858R — осимертиниб 3 года (ADAURA).",
+      "intent": "adjuvant_optional"
+    },
+    {
+      "id": "SYS_NSCLC_II_EGFR",
+      "priority": 83,
+      "condition": {"category": "NSCLC", "stage_in": ["IIA", "IIB"], "ecog_max": 2,
+                    "actionable_driver_gene": "EGFR",
+                    "actionable_variant_in": ["ex19 del", "L858R"]},
+      "text": "Стадия {stage} с активирующей мутацией EGFR ({variant}). Адъювантная терапия: 4 цикла платинового дублета с последующим осимертинибом 80 мг/сут в течение 3 лет (ADAURA). Иммунотерапия в адъюванте при актуальном EGFR не показана.",
+      "intent": "adjuvant_chemo_then_tki"
+    },
+    {
+      "id": "SYS_NSCLC_II_STANDARD",
+      "priority": 82,
+      "condition": {"category": "NSCLC", "stage_in": ["IIA", "IIB"], "ecog_max": 2},
+      "text": "Стадия {stage}. Адъювантная химиотерапия — 4 цикла платинового дублета (цисплатин 75 мг/м² + винорелбин/пеметрексед). При PD-L1 ≥1% и отсутствии актуальных драйверных мутаций — рассмотреть последовательный адъювантный атезолизумаб 1200 мг каждые 3 недели в течение 1 года (IMpower010).",
+      "intent": "adjuvant_chemo_io"
+    },
+    {
+      "id": "SYS_NSCLC_IIIA_NEOADJ",
+      "priority": 78,
+      "condition": {"category": "NSCLC", "stage": ["IIIA"], "ecog_max": 1, "n_max": "N2a",
+                    "actionable_driver": false},
+      "text": "Стадия IIIA, резектабельная. Предпочтительный подход — неоадъювантная химиоиммунотерапия: ниволумаб 360 мг + платиновый дублет каждые 3 недели, 3 цикла (CheckMate 816). После операции — адъювантная терапия по показаниям.",
+      "intent": "neoadjuvant_chemo_io"
+    },
+    {
+      "id": "SYS_NSCLC_IIIA_EGFR",
+      "priority": 77,
+      "condition": {"category": "NSCLC", "stage": ["IIIA"], "ecog_max": 2,
+                    "actionable_driver_gene": "EGFR",
+                    "actionable_variant_in": ["ex19 del", "L858R"]},
+      "text": "Стадия IIIA с активирующей мутацией EGFR ({variant}). При резектабельности — операция + адъювантный осимертиниб 3 года (ADAURA). При нерезектабельности — конкурентная ХЛТ с последующим осимертинибом (LAURA).",
+      "intent": "tki_adjuvant_or_consolidation"
+    },
+    {
+      "id": "SYS_NSCLC_IIIBC_PACIFIC",
+      "priority": 76,
+      "condition": {"category": "NSCLC", "stage_in": ["IIIB", "IIIC"], "ecog_max": 2,
+                    "actionable_driver": false},
+      "text": "Стадия {stage}, нерезектабельная. Системный компонент — платиновый дублет конкурентно с лучевой терапией (цисплатин + этопозид/винорелбин или карбоплатин + паклитаксел). После завершения ХЛТ при отсутствии прогрессии — консолидация дурвалумабом 10 мг/кг каждые 2 недели или 1500 мг каждые 4 недели в течение 1 года (PACIFIC).",
+      "intent": "chemo_radiation_consolidation"
+    },
+
+    {
+      "id": "SYS_M_EGFR_FIRSTLINE",
+      "priority": 70,
+      "condition": {"stage_group": "metastatic", "actionable_driver_gene": "EGFR",
+                    "actionable_variant_in": ["ex19 del", "L858R", "T790M"], "ecog_max": 2},
+      "text": "Метастатическая стадия {stage} с активирующей мутацией EGFR ({variant}). 1-я линия — осимертиниб 80 мг/сут (FLAURA). Возможна комбинация осимертиниб + платиновый дублет при удовлетворительном PS и высокой опухолевой нагрузке (FLAURA2). При прогрессии — биопсия для оценки приобретённой резистентности (T790M, MET amp, гистологическая трансформация).",
+      "intent": "targeted_first_line"
+    },
+    {
+      "id": "SYS_M_EGFR_EX20",
+      "priority": 69,
+      "condition": {"stage_group": "metastatic", "actionable_variant_in": ["ex20 ins"], "ecog_max": 2},
+      "text": "Метастатическая стадия {stage} с инсерцией в экзоне 20 EGFR. 1-я линия — амивантамаб 1050 мг + платиновый дублет (PAPILLON). Альтернатива — мобоцертиниб 160 мг/сут. Классические ТКИ (осимертиниб, гефитиниб) при этой мутации неэффективны.",
+      "intent": "targeted_first_line"
+    },
+    {
+      "id": "SYS_M_ALK",
+      "priority": 68,
+      "condition": {"stage_group": "metastatic", "actionable_driver_gene": "ALK", "ecog_max": 2},
+      "text": "Метастатическая стадия {stage} с реаранжировкой ALK. 1-я линия — алектиниб 600 мг 2 р/сут или лорлатиниб 100 мг/сут (CROWN — преимущество в безпрогрессивной выживаемости и интракраниальной активности). Иммунотерапия в 1-й линии при ALK+ не показана.",
+      "intent": "targeted_first_line"
+    },
+    {
+      "id": "SYS_M_ROS1",
+      "priority": 67,
+      "condition": {"stage_group": "metastatic", "actionable_driver_gene": "ROS1", "ecog_max": 2},
+      "text": "Метастатическая стадия {stage} с реаранжировкой ROS1. 1-я линия — энтректиниб 600 мг/сут (приоритет при метастазах в ГМ — высокая интракраниальная активность) или кризотиниб 250 мг 2 р/сут. При прогрессии — лорлатиниб или репотректиниб.",
+      "intent": "targeted_first_line"
+    },
+    {
+      "id": "SYS_M_BRAF",
+      "priority": 66,
+      "condition": {"stage_group": "metastatic", "actionable_driver_gene": "BRAF", "ecog_max": 2},
+      "text": "Метастатическая стадия {stage} с мутацией BRAF V600E. 1-я линия — комбинация дабрафениб 150 мг 2 р/сут + траметиниб 2 мг/сут (BRF113928).",
+      "intent": "targeted_first_line"
+    },
+    {
+      "id": "SYS_M_MET",
+      "priority": 65,
+      "condition": {"stage_group": "metastatic", "actionable_driver_gene": "MET", "ecog_max": 2},
+      "text": "Метастатическая стадия {stage} с MET exon 14 skipping. 1-я линия — капматиниб 400 мг 2 р/сут (GEOMETRY mono-1) или тепотиниб 500 мг/сут (VISION).",
+      "intent": "targeted_first_line"
+    },
+    {
+      "id": "SYS_M_RET",
+      "priority": 64,
+      "condition": {"stage_group": "metastatic", "actionable_driver_gene": "RET", "ecog_max": 2},
+      "text": "Метастатическая стадия {stage} с реаранжировкой RET. 1-я линия — селперкатиниб 160 мг 2 р/сут (LIBRETTO-001) или пралсетиниб 400 мг/сут (ARROW).",
+      "intent": "targeted_first_line"
+    },
+    {
+      "id": "SYS_M_NTRK",
+      "priority": 63,
+      "condition": {"stage_group": "metastatic", "actionable_driver_gene": "NTRK", "ecog_max": 2},
+      "text": "Метастатическая стадия {stage} с реаранжировкой NTRK. 1-я линия — ларотректиниб 100 мг 2 р/сут или энтректиниб 600 мг/сут.",
+      "intent": "targeted_first_line"
+    },
+    {
+      "id": "SYS_M_HER2",
+      "priority": 62,
+      "condition": {"stage_group": "metastatic", "actionable_driver_gene": "HER2", "ecog_max": 2},
+      "text": "Метастатическая стадия {stage} с инсерцией в экзоне 20 HER2. 1-я линия — платиновый дублет ± иммунотерапия по стандартам (классические схемы). 2-я линия — трастузумаб дерукстекан 5.4 мг/кг каждые 3 недели (DESTINY-Lung01/02).",
+      "intent": "chemo_io_then_adc"
+    },
+    {
+      "id": "SYS_M_KRAS_G12C",
+      "priority": 61,
+      "condition": {"stage_group": "metastatic", "actionable_variant_in": ["G12C"], "ecog_max": 2},
+      "text": "Метастатическая стадия {stage} с мутацией KRAS G12C. 1-я линия — платиновый дублет + иммунотерапия по стандартам (выбор по PD-L1 и гистологии). 2-я линия после прогрессии — соторасиб 960 мг/сут (CodeBreaK 200) или адаграсиб 600 мг 2 р/сут (KRYSTAL-1).",
+      "intent": "chemo_io_then_targeted"
+    },
+
+    {
+      "id": "SYS_M_NSCLC_PDL1_HIGH",
+      "priority": 50,
+      "condition": {"stage_group": "metastatic", "category": "NSCLC", "pdl1_min": 50,
+                    "actionable_driver": false, "ecog_max": 1},
+      "text": "Метастатическая стадия {stage}, NSCLC, PD-L1 TPS {pdl1}% (≥50%), без actionable драйверов. 1-я линия — монотерапия пембролизумабом 200 мг каждые 3 недели или 400 мг каждые 6 недель (KEYNOTE-024). Альтернативы — атезолизумаб или цемиплимаб в монорежиме. Длительность — до прогрессии или 2 года.",
+      "intent": "io_monotherapy"
+    },
+    {
+      "id": "SYS_M_NSCLC_PDL1_HIGH_PS2",
+      "priority": 49,
+      "condition": {"stage_group": "metastatic", "category": "NSCLC", "pdl1_min": 50,
+                    "actionable_driver": false, "ecog": 2},
+      "text": "Метастатическая стадия {stage}, PD-L1 TPS {pdl1}% (≥50%), PS 2. 1-я линия — монотерапия пембролизумабом 200 мг каждые 3 недели. Комбинированная химиоиммунотерапия не рекомендуется из-за PS 2 — высокий риск токсичности.",
+      "intent": "io_monotherapy"
+    },
+    {
+      "id": "SYS_M_NSCLC_NONSQ_CHEMO_IO",
+      "priority": 45,
+      "condition": {"stage_group": "metastatic", "diagnosis_in": ["D1", "D3", "D4", "D5"],
+                    "actionable_driver": false, "ecog_max": 1},
+      "text": "Метастатическая стадия {stage}, неплоскоклеточный НМРЛ, без actionable драйверов, PD-L1 TPS {pdl1}%. 1-я линия — пембролизумаб 200 мг + пеметрексед 500 мг/м² + цисплатин/карбоплатин каждые 3 недели, 4 цикла, затем поддержка пеметрекседом + пембролизумабом до прогрессии или 2 лет (KEYNOTE-189). Альтернативы — атезолизумаб + бевацизумаб + карбоплатин + паклитаксел (IMpower150).",
+      "intent": "chemo_io_combo"
+    },
+    {
+      "id": "SYS_M_NSCLC_SQ_CHEMO_IO",
+      "priority": 44,
+      "condition": {"stage_group": "metastatic", "diagnosis_in": ["D2"],
+                    "actionable_driver": false, "ecog_max": 1},
+      "text": "Метастатическая стадия {stage}, плоскоклеточный рак, без actionable драйверов, PD-L1 TPS {pdl1}%. 1-я линия — пембролизумаб 200 мг + карбоплатин AUC 6 + паклитаксел 200 мг/м² или наб-паклитаксел каждые 3 недели, 4 цикла, затем поддержка пембролизумабом (KEYNOTE-407).",
+      "intent": "chemo_io_combo"
+    },
+    {
+      "id": "SYS_M_NSCLC_PS2_CHEMO",
+      "priority": 40,
+      "condition": {"stage_group": "metastatic", "category": "NSCLC",
+                    "actionable_driver": false, "ecog": 2, "pdl1_max": 49},
+      "text": "Метастатическая стадия {stage}, PS 2, PD-L1 TPS {pdl1}% (<50%), без actionable драйверов. 1-я линия — монохимиотерапия: карбоплатин AUC 5 + пеметрексед 500 мг/м² (неплоскоклеточный) или карбоплатин + наб-паклитаксел (плоскоклеточный), 4 цикла. Комбинированная химиоиммунотерапия не рекомендуется из-за PS 2.",
+      "intent": "chemo_monotherapy"
+    },
+
+    {
+      "id": "SYS_SCLC_LIMITED",
+      "priority": 35,
+      "condition": {"diagnosis_in": ["D6"], "stage_group_in": ["early", "locally_advanced_operable", "locally_advanced_borderline", "locally_advanced_inoperable"], "ecog_max": 2},
+      "text": "Мелкоклеточный рак, ограниченная стадия. 4-6 циклов цисплатин 75 мг/м² + этопозид 100 мг/м² (3 дня) каждые 3 недели конкурентно с лучевой терапией. При полном/частичном ответе — профилактическое облучение головного мозга (PCI) 25 Гр.",
+      "intent": "chemo_radiation_concurrent"
+    },
+    {
+      "id": "SYS_SCLC_EXTENSIVE",
+      "priority": 34,
+      "condition": {"diagnosis_in": ["D6"], "stage_group": "metastatic", "ecog_max": 2},
+      "text": "Мелкоклеточный рак, распространённая стадия. 1-я линия — атезолизумаб 1200 мг + этопозид 100 мг/м² + карбоплатин AUC 5, 4-6 циклов с поддержкой атезолизумабом (IMpower133). Альтернатива — дурвалумаб 1500 мг + этопозид + платина (CASPIAN).",
+      "intent": "chemo_io_combo"
+    },
+
+    {
+      "id": "SYS_CARCINOID_TYPICAL_LOCAL",
+      "priority": 30,
+      "condition": {"diagnosis_in": ["D8"], "stage_group_in": ["early", "locally_advanced_operable"]},
+      "text": "Типичный карциноид (NET G1), локализованный. Системная адъювантная терапия не показана — хирургического лечения достаточно. Длительное наблюдение.",
+      "intent": "no_adjuvant"
+    },
+    {
+      "id": "SYS_CARCINOID_ATYPICAL_LOCAL",
+      "priority": 29,
+      "condition": {"diagnosis_in": ["D9"], "stage_group_in": ["early", "locally_advanced_operable", "locally_advanced_borderline"]},
+      "text": "Атипичный карциноид (NET G2), локализованный. При N+ — рассмотреть адъювантную химиотерапию (этопозид + платина или капецитабин + темозоломид при высоком Ki-67). При радикальной R0-резекции без N+ — наблюдение.",
+      "intent": "adjuvant_optional"
+    },
+    {
+      "id": "SYS_CARCINOID_METASTATIC",
+      "priority": 28,
+      "condition": {"diagnosis_in": ["D8", "D9"], "stage_group": "metastatic", "ecog_max": 2},
+      "text": "Метастатическая нейроэндокринная опухоль. 1-я линия — аналоги соматостатина (октреотид LAR 30 мг каждые 4 недели или ланреотид 120 мг каждые 4 недели — PROMID, CLARINET). При прогрессии или Ki-67 >10% — эверолимус 10 мг/сут (RADIANT-4) или PRRT 177Lu-DOTATATE (NETTER-1). Цитотоксическая химиотерапия — при атипичном карциноиде с агрессивным течением.",
+      "intent": "targeted_metastatic"
+    },
+
+    {
+      "id": "SYS_FALLBACK_METASTATIC",
+      "priority": 10,
+      "condition": {"_default": true, "stage_group": "metastatic"},
+      "text": "Метастатическая стадия. Тактика системной терапии уточняется на мультидисциплинарном консилиуме с учётом гистологии, биомаркеров, PS и сопутствующей патологии. Базовая опция — платиновая дублетная химиотерапия.",
+      "intent": "chemo_default"
+    },
+    {
+      "id": "SYS_FALLBACK_LOCAL",
+      "priority": 9,
+      "condition": {"_default": true},
+      "text": "Системная терапия в качестве компонента комплексного лечения требует обсуждения на мультидисциплинарном консилиуме.",
+      "intent": "uncertain"
+    }
+  ]
+}

@@ -112,6 +112,9 @@ class TNMBlock:
         )
         if case.m_code != "M0":
             case.m_sites = self._pick_m_sites(case.m_code, rng)
+        # Флаги по локализациям — нужны для блоков рекомендаций
+        case.has_brain_metastases = any("мозг" in s for s in case.m_sites)
+        case.has_bone_metastases = any("кост" in s for s in case.m_sites)
 
     def _pick_m_sites(self, m_code: str, rng: random.Random) -> list:
         sites = self.tnm["metastatic_sites"]

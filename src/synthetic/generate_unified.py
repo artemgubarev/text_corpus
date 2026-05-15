@@ -25,8 +25,13 @@ META_KEYS = [
     "molecular_included", "actionable_driver", "actionable_gene",
     "actionable_variant_short", "tp53_result", "pdl1_tps", "pdl1_category",
     "ecog", "karnofsky",
-    "matched_rule_id", "treatment_intent",
     "lvi_status", "pleural_status", "perineural_status", "margin_status",
+    "has_brain_metastases", "has_bone_metastases",
+    # 4 блока рекомендаций
+    "surgery_rule_id", "surgery_intent",
+    "radiotherapy_rule_id", "radiotherapy_intent",
+    "systemic_rule_id", "systemic_intent",
+    "supportive_rule_id", "supportive_intent",
 ]
 
 
@@ -82,7 +87,11 @@ def generate(n_samples: int, n_variants: int, seed: int,
             print("=" * 70)
             print(
                 f"{r['id']} | dx={r['diagnosis_id']} stage={r['stage']} "
-                f"ecog={r['ecog']} intent={r['treatment_intent']} aug={r['is_augmented']}"
+                f"ecog={r['ecog']} aug={r['is_augmented']}"
+            )
+            print(
+                f"  surg={r['surgery_intent']} | rt={r['radiotherapy_intent']} | "
+                f"sys={r['systemic_intent']} | sup={r['supportive_intent']}"
             )
             if r["validation_errors"]:
                 print(f"  ⚠ {r['validation_errors']}")

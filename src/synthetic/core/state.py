@@ -74,11 +74,27 @@ class ClinicalCase:
     ecog: int = 0
     karnofsky: int = 100
 
-    # --- Рекомендация ---
-    matched_rule_id: Optional[str] = None
-    treatment_intent: str = ""
-    recommendation_text: str = ""
-    follow_up_text: str = ""
+    # --- Рекомендации (4 блока, каждый учится отдельной моделью) ---
+    # Хирургия
+    surgery_rule_id: Optional[str] = None
+    surgery_intent: str = ""
+    surgery_text: str = ""
+    # Лучевая терапия
+    radiotherapy_rule_id: Optional[str] = None
+    radiotherapy_intent: str = ""
+    radiotherapy_text: str = ""
+    # Системная терапия
+    systemic_rule_id: Optional[str] = None
+    systemic_intent: str = ""
+    systemic_text: str = ""
+    # Поддерживающая терапия и наблюдение
+    supportive_rule_id: Optional[str] = None
+    supportive_intent: str = ""
+    supportive_text: str = ""
+
+    # --- Вычисляемые флаги для условий (используются блоками рекомендаций) ---
+    has_brain_metastases: bool = False
+    has_bone_metastases: bool = False
 
     # --- Финальный текст ---
     full_text: str = ""
@@ -106,7 +122,10 @@ def maybe(prob: float, rng: random.Random) -> bool:
 # Загрузка схем
 # ======================================================================
 
-SCHEMA_FILES = ["diagnoses", "morphology", "tnm", "molecular", "ecog", "recommendations"]
+SCHEMA_FILES = [
+    "diagnoses", "morphology", "tnm", "molecular", "ecog",
+    "surgery", "radiotherapy", "systemic_therapy", "supportive_care",
+]
 
 
 def load_schemas(schemas_dir: Path) -> dict:
@@ -134,14 +153,24 @@ def validate_case(case: ClinicalCase) -> list[str]:
     """Sanity-check итогового state. Возвращает список ошибок."""
     errors = []
 
-    if case.ecog == 4 and case.treatment_intent != "palliative_supportive":
-        errors.append(f"ECOG 4 но intent={case.treatment_intent}")
+    # ECOG 4 → во всех 4 блоках должен быть отказ от активного лечения
+    if case.ecog == 4:
+        if case.surgery_intent not in ("not_indicated_ps",):
+            errors.append(f"ECOG 4 но surgery_intent={case.surgery_intent}")
+        if case.radiotherapy_intent not in ("palliative_only",):
+            errors.append(f"ECOG 4 но radiotherapy_intent={case.radiotherapy_intent}")
+        if case.systemic_intent not in ("not_indicated_ps",):
+            errors.append(f"ECOG 4 но systemic_intent={case.systemic_intent}")
+        if case.supportive_intent != "bsc":
+            errors.append(f"ECOG 4 но supportive_intent={case.supportive_intent}")
 
-    if case.ecog == 3 and case.treatment_intent in (
-            "chemo_io_combo", "curative_surgical", "curative_multimodal",
-            "curative_chemoradiation"):
-        errors.append(f"ECOG 3 но intent={case.treatment_intent}")
+    # ECOG 3 → системная химия/IO противопоказана
+    if case.ecog == 3 and case.systemic_intent in (
+            "chemo_io_combo", "neoadjuvant_chemo_io", "chemo_radiation_concurrent",
+            "chemo_radiation_consolidation", "adjuvant_chemo_io"):
+        errors.append(f"ECOG 3 но systemic_intent={case.systemic_intent}")
 
+    # Несколько actionable драйверов
     actionable_count = sum(
         1 for r in case.gene_results.values()
         if r["result"] == "positive" and r.get("tier") in ("1 (FDA)", "2")

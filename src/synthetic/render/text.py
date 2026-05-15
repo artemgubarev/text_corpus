@@ -34,7 +34,7 @@ class TextRenderer:
         if case.molecular_included:
             blocks.append(self._molecular(case))
         blocks.append(self._ecog(case))
-        blocks.append(self._recommendation(case))
+        blocks.append(self._recommendations(case))
         return "\n\n".join(b for b in blocks if b)
 
     # ---- Блоки ----
@@ -206,8 +206,19 @@ class TextRenderer:
         lines.append(" ".join(interp))
         return "\n".join(lines)
 
-    def _recommendation(self, case: ClinicalCase) -> str:
-        lines = ["Рекомендация по лечению.", case.recommendation_text]
-        if case.follow_up_text:
-            lines.append(case.follow_up_text)
+    def _recommendations(self, case: ClinicalCase) -> str:
+        """Четыре блока: хирургия, ЛТ, системная, поддерживающая."""
+        lines = ["Рекомендация по лечению."]
+        lines.append("")
+        lines.append("1. Хирургическое лечение.")
+        lines.append(case.surgery_text)
+        lines.append("")
+        lines.append("2. Лучевая терапия.")
+        lines.append(case.radiotherapy_text)
+        lines.append("")
+        lines.append("3. Системная терапия.")
+        lines.append(case.systemic_text)
+        lines.append("")
+        lines.append("4. Поддерживающая терапия и наблюдение.")
+        lines.append(case.supportive_text)
         return "\n".join(lines)
