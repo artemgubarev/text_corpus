@@ -374,7 +374,7 @@ def text_describe_patient(patient, shuffle_blocks=True):
         ]
     }
 
-    intro = f"Пациент: {synonym(sex_text[patient['sex']])}, {patient['age']} лет."
+    intro = f"{synonym(sex_text[patient['sex']])}, {patient['age']} лет."
     
     symptoms = patient.get("symptoms", [])
     symptoms_block = (

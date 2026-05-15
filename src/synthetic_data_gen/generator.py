@@ -28,7 +28,7 @@ def case_to_text(case):
 
 texts = []
 
-for i in range(0, 100):
+for i in range(0, 1000):
     case = generate_case()
     errors = validate_case(case)
     if not errors:
