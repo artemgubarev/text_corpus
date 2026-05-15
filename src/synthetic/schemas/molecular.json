@@ -1,0 +1,112 @@
+{
+  "methods": [
+    {"id": "M1", "text": "NGS (Next Generation Sequencing, DNA+RNA panel)", "sensitivity_pct": 5},
+    {"id": "M2", "text": "Расширенный NGS (>500 генов)", "sensitivity_pct": 2},
+    {"id": "M3", "text": "Аллель-специфическая ПЦР (EGFR/KRAS/BRAF) + FISH (ALK, ROS1)", "sensitivity_pct": 10}
+  ],
+  "materials": [
+    "FFPE (биопсия, 5 срезов)",
+    "FFPE (резекционный материал, 10 срезов 5 мкм)",
+    "FFPE-блок (опухолевая клеточность >30%)",
+    "Цитоблок (cell block) после EBUS-TBNA"
+  ],
+  "comment_actionability_tiers": "Уровни доказательности: 1 (FDA-approved drug), 2 (off-label/clinical guidelines), 3 (VUS — variant of unknown significance)",
+  "drivers": [
+    {"gene": "EGFR", "variants": [
+      {"id": "EGFR_NEG", "result": "negative", "label": "Отрицательно", "tier": null},
+      {"id": "EGFR_EX19", "result": "positive", "label": "Делеция в экзоне 19 (ex19 del)",
+       "variant_short": "ex19 del", "tier": "1 (FDA)",
+       "drugs_first_line": ["осимертиниб"], "drugs_alt": ["афатиниб", "гефитиниб"]},
+      {"id": "EGFR_L858R", "result": "positive", "label": "L858R (точечная мутация в экзоне 21)",
+       "variant_short": "L858R", "tier": "1 (FDA)",
+       "drugs_first_line": ["осимертиниб"], "drugs_alt": ["афатиниб"]},
+      {"id": "EGFR_T790M", "result": "positive", "label": "T790M (резистентность к ТКИ 1-2 поколения)",
+       "variant_short": "T790M", "tier": "1 (FDA)",
+       "drugs_first_line": ["осимертиниб"]},
+      {"id": "EGFR_EX20", "result": "positive", "label": "Инсерция в экзоне 20 (ex20 ins)",
+       "variant_short": "ex20 ins", "tier": "2",
+       "drugs_first_line": ["амивантамаб"], "drugs_alt": ["мобоцертиниб"]}
+    ], "weight_pos_by_diagnosis": {"D1": 0.15, "default": 0.02}},
+
+    {"gene": "KRAS", "variants": [
+      {"id": "KRAS_NEG", "result": "negative", "label": "Отрицательно", "tier": null},
+      {"id": "KRAS_G12C", "result": "positive", "label": "G12C", "variant_short": "G12C",
+       "tier": "1 (FDA)", "drugs_second_line": ["соторасиб", "адаграсиб"]},
+      {"id": "KRAS_G12D", "result": "positive", "label": "G12D", "variant_short": "G12D",
+       "tier": "2", "drugs_investigational": ["MRTX1133 (clinical trial)"]},
+      {"id": "KRAS_G12V", "result": "positive", "label": "G12V", "variant_short": "G12V",
+       "tier": "2"},
+      {"id": "KRAS_OTHER", "result": "positive", "label": "G13D", "variant_short": "G13D",
+       "tier": "3 (VUS)"}
+    ], "weight_pos_by_diagnosis": {"D1": 0.30, "default": 0.05}},
+
+    {"gene": "ALK", "variants": [
+      {"id": "ALK_NEG", "result": "negative", "label": "Отрицательно (FISH)", "tier": null},
+      {"id": "ALK_POS", "result": "positive", "label": "Реаранжировка ALK (EML4-ALK)",
+       "variant_short": "ALK-fusion", "tier": "1 (FDA)",
+       "drugs_first_line": ["алектиниб", "лорлатиниб"], "drugs_alt": ["бригатиниб"]}
+    ], "weight_pos_by_diagnosis": {"D1": 0.05, "default": 0.01}},
+
+    {"gene": "ROS1", "variants": [
+      {"id": "ROS1_NEG", "result": "negative", "label": "Отрицательно (FISH)", "tier": null},
+      {"id": "ROS1_POS", "result": "positive", "label": "Реаранжировка ROS1",
+       "variant_short": "ROS1-fusion", "tier": "1 (FDA)",
+       "drugs_first_line": ["энтректиниб", "кризотиниб"]}
+    ], "weight_pos_by_diagnosis": {"D1": 0.02, "default": 0.005}},
+
+    {"gene": "BRAF", "variants": [
+      {"id": "BRAF_NEG", "result": "negative", "label": "Отрицательно", "tier": null},
+      {"id": "BRAF_V600E", "result": "positive", "label": "V600E", "variant_short": "V600E",
+       "tier": "1 (FDA)", "drugs_first_line": ["дабрафениб + траметиниб"]}
+    ], "weight_pos_by_diagnosis": {"D1": 0.03, "default": 0.005}},
+
+    {"gene": "MET", "variants": [
+      {"id": "MET_NEG", "result": "negative", "label": "Отрицательно", "tier": null},
+      {"id": "MET_EX14", "result": "positive", "label": "MET exon 14 skipping",
+       "variant_short": "ex14 skip", "tier": "1 (FDA)",
+       "drugs_first_line": ["капматиниб", "тепотиниб"]}
+    ], "weight_pos_by_diagnosis": {"D1": 0.03, "default": 0.005}},
+
+    {"gene": "RET", "variants": [
+      {"id": "RET_NEG", "result": "negative", "label": "Отрицательно", "tier": null},
+      {"id": "RET_POS", "result": "positive", "label": "Реаранжировка RET (KIF5B-RET)",
+       "variant_short": "RET-fusion", "tier": "1 (FDA)",
+       "drugs_first_line": ["селперкатиниб", "пралсетиниб"]}
+    ], "weight_pos_by_diagnosis": {"D1": 0.02, "default": 0.005}},
+
+    {"gene": "NTRK", "variants": [
+      {"id": "NTRK_NEG", "result": "negative", "label": "Отрицательно", "tier": null},
+      {"id": "NTRK_POS", "result": "positive", "label": "Реаранжировка NTRK",
+       "variant_short": "NTRK-fusion", "tier": "1 (FDA)",
+       "drugs_first_line": ["ларотректиниб", "энтректиниб"]}
+    ], "weight_pos_by_diagnosis": {"D1": 0.005, "default": 0.002}},
+
+    {"gene": "HER2", "variants": [
+      {"id": "HER2_NEG", "result": "negative", "label": "Отрицательно", "tier": null},
+      {"id": "HER2_EX20", "result": "positive", "label": "Инсерция в экзоне 20 HER2",
+       "variant_short": "ex20 ins", "tier": "1 (FDA)",
+       "drugs_first_line": ["трастузумаб дерукстекан"]}
+    ], "weight_pos_by_diagnosis": {"D1": 0.02, "default": 0.005}}
+  ],
+  "tp53": {
+    "test_probability": 0.85,
+    "variants": [
+      {"id": "TP53_NEG", "result": "negative", "label": "Отрицательно", "tier": null, "prob": 0.45},
+      {"id": "TP53_R248Q", "result": "positive", "label": "R248Q", "tier": "3 (VUS)", "prob": 0.12},
+      {"id": "TP53_R273H", "result": "positive", "label": "R273H", "tier": "3 (VUS)", "prob": 0.12},
+      {"id": "TP53_R175H", "result": "positive", "label": "R175H", "tier": "3 (VUS)", "prob": 0.10},
+      {"id": "TP53_OTHER", "result": "positive", "label": "миссенс-мутация", "tier": "3 (VUS)", "prob": 0.21}
+    ]
+  },
+  "pdl1": {
+    "distribution": {"<1": 0.35, "1-49": 0.40, ">=50": 0.25},
+    "ranges": {"<1": [0, 0], "1-49": [1, 49], ">=50": [50, 100]}
+  },
+  "vaf_range_positive": [10, 60],
+  "interaction_rules": {
+    "comment": "Driver mutations в NSCLC взаимоисключающие. EGFR, ALK, ROS1, KRAS G12C, BRAF V600E, MET ex14, RET, NTRK, HER2 ex20 не сосуществуют. Если выбран один — все остальные принудительно negative.",
+    "exclusive_drivers": ["EGFR_EX19", "EGFR_L858R", "EGFR_T790M", "EGFR_EX20",
+                          "ALK_POS", "ROS1_POS", "KRAS_G12C", "BRAF_V600E",
+                          "MET_EX14", "RET_POS", "NTRK_POS", "HER2_EX20"]
+  }
+}

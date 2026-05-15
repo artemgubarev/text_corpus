@@ -1,0 +1,64 @@
+{
+  "ecog_scale": [
+    {"ecog": 0, "karnofsky_range": [90, 100], "label": "PS 0",
+     "interpretations": [
+       "Пациент полностью активен, ведёт обычный образ жизни без ограничений.",
+       "Способен к выполнению любой предзаболеваниевой активности.",
+       "Симптомы заболевания отсутствуют или минимальны."
+     ]},
+    {"ecog": 1, "karnofsky_range": [70, 80], "label": "PS 1",
+     "interpretations": [
+       "Пациент амбулаторен. Отмечается ограничение в тяжёлой физической работе, но способен к лёгкой/сидячей работе.",
+       "Полностью себя обслуживает.",
+       "Проводит в бодрствовании более 50% дневного времени."
+     ]},
+    {"ecog": 2, "karnofsky_range": [50, 60], "label": "PS 2",
+     "interpretations": [
+       "Пациент амбулаторен, способен к самообслуживанию.",
+       "Не способен к выполнению производственной работы.",
+       "Проводит в постели менее 50% дневного времени.",
+       "Симптомы умеренно выражены."
+     ]},
+    {"ecog": 3, "karnofsky_range": [30, 40], "label": "PS 3",
+     "interpretations": [
+       "Способность к самообслуживанию ограничена.",
+       "Проводит в постели или кресле более 50% времени.",
+       "Нуждается в помощи в повседневной активности."
+     ]},
+    {"ecog": 4, "karnofsky_range": [10, 20], "label": "PS 4",
+     "interpretations": [
+       "Полностью прикован к постели.",
+       "Не способен к самообслуживанию, нуждается в постоянном уходе.",
+       "Терминальное состояние."
+     ]}
+  ],
+  "treatment_eligibility": {
+    "comment": "Что доступно при каком ECOG. Используется в логике рекомендаций.",
+    "0": {"systemic_therapy": "full", "surgery": true, "radiotherapy": "all",
+          "io_combo": true, "io_mono": true, "targeted": true, "tki_oral": true,
+          "palliative_only": false},
+    "1": {"systemic_therapy": "full", "surgery": true, "radiotherapy": "all",
+          "io_combo": true, "io_mono": true, "targeted": true, "tki_oral": true,
+          "palliative_only": false},
+    "2": {"systemic_therapy": "reduced", "surgery": "case_by_case", "radiotherapy": "all",
+          "io_combo": "caution", "io_mono": true, "targeted": true, "tki_oral": true,
+          "palliative_only": false,
+          "warning": "При PS 2 предпочтительна монохимиотерапия или иммунотерапия без химии"},
+    "3": {"systemic_therapy": false, "surgery": false, "radiotherapy": "palliative_only",
+          "io_combo": false, "io_mono": false, "targeted": "tki_only", "tki_oral": true,
+          "palliative_only": false,
+          "warning": "При PS 3 системная химия и комбинированная иммунотерапия противопоказаны. Возможна только пероральная таргетная терапия (ТКИ) и паллиативное лечение."},
+    "4": {"systemic_therapy": false, "surgery": false, "radiotherapy": "palliative_only",
+          "io_combo": false, "io_mono": false, "targeted": false, "tki_oral": false,
+          "palliative_only": true,
+          "warning": "При PS 4 — только наилучшее поддерживающее лечение (best supportive care). Любая противоопухолевая терапия противопоказана."}
+  },
+  "ecog_distribution_by_stage_group": {
+    "comment": "Реалистичное распределение ECOG по стадиям. На ранних стадиях редкий PS 3-4.",
+    "early":                      {"0": 0.50, "1": 0.40, "2": 0.08, "3": 0.02, "4": 0.00},
+    "locally_advanced_operable":  {"0": 0.35, "1": 0.45, "2": 0.15, "3": 0.05, "4": 0.00},
+    "locally_advanced_borderline":{"0": 0.20, "1": 0.50, "2": 0.20, "3": 0.08, "4": 0.02},
+    "locally_advanced_inoperable":{"0": 0.10, "1": 0.45, "2": 0.30, "3": 0.10, "4": 0.05},
+    "metastatic":                 {"0": 0.05, "1": 0.35, "2": 0.30, "3": 0.20, "4": 0.10}
+  }
+}

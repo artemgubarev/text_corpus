@@ -1,0 +1,100 @@
+{
+  "version": "TNM-9 (IASLC, 2025)",
+  "t_categories": [
+    {"code": "Tis", "size_mm": [0, 30], "description": "AIS, чисто лепидический, ≤30 мм",
+     "requires_subtype": "AD4"},
+    {"code": "T1mi", "size_mm": [0, 30], "description": "MIA, ≤30 мм, инвазивный компонент ≤5 мм",
+     "requires_subtype": "AD3"},
+    {"code": "T1a", "size_mm": [0, 10], "description": "≤10 мм, без инвазии плевры/главного бронха"},
+    {"code": "T1b", "size_mm": [11, 20], "description": ">10 мм, ≤20 мм"},
+    {"code": "T1c", "size_mm": [21, 30], "description": ">20 мм, ≤30 мм"},
+    {"code": "T2a", "size_mm": [31, 40], "description": ">30 мм, ≤40 мм ИЛИ инвазия висцеральной плевры/главного бронха"},
+    {"code": "T2b", "size_mm": [41, 50], "description": ">40 мм, ≤50 мм"},
+    {"code": "T3", "size_mm": [51, 70], "description": ">50 мм, ≤70 мм ИЛИ инвазия грудной стенки/диафрагмального нерва"},
+    {"code": "T4", "size_mm": [71, 200], "description": ">70 мм ИЛИ инвазия средостения/сердца/крупных сосудов"}
+  ],
+  "n_categories": [
+    {"code": "N0", "description": "Метастазов в регионарных лимфоузлах нет"},
+    {"code": "N1", "description": "Метастазы в ипсилатеральных перибронхиальных/корневых ЛУ (станции 10-14)"},
+    {"code": "N2a", "description": "Метастазы в одной станции медиастинальных ЛУ (single-station N2)"},
+    {"code": "N2b", "description": "Метастазы в нескольких станциях медиастинальных ЛУ (multi-station N2)"},
+    {"code": "N3", "description": "Контралатеральные медиастинальные или надключичные ЛУ"}
+  ],
+  "lymph_node_stations": [
+    {"station": "2R", "name": "верхние паратрахеальные справа", "side": "right"},
+    {"station": "2L", "name": "верхние паратрахеальные слева", "side": "left"},
+    {"station": "4R", "name": "нижние паратрахеальные справа", "side": "right"},
+    {"station": "4L", "name": "нижние паратрахеальные слева", "side": "left"},
+    {"station": "5", "name": "субаортальные (АП окна)", "side": "left"},
+    {"station": "7", "name": "субкаринальные", "side": "central"},
+    {"station": "10R", "name": "корня правого лёгкого", "side": "right"},
+    {"station": "10L", "name": "корня левого лёгкого", "side": "left"},
+    {"station": "11R", "name": "междолевые справа", "side": "right"},
+    {"station": "11L", "name": "междолевые слева", "side": "left"}
+  ],
+  "m_categories": [
+    {"code": "M0", "description": "Отдалённых метастазов нет"},
+    {"code": "M1a", "description": "Метастазы в контралатеральном лёгком, плевральная/перикардиальная диссеминация, злокачественный выпот"},
+    {"code": "M1b", "description": "Единственный экстраторакальный метастаз в одном органе"},
+    {"code": "M1c1", "description": "Множественные экстраторакальные метастазы в одном органе"},
+    {"code": "M1c2", "description": "Множественные экстраторакальные метастазы в нескольких органах"}
+  ],
+  "metastatic_sites": [
+    {"site": "brain", "ru": "головной мозг"},
+    {"site": "bone", "ru": "кости"},
+    {"site": "liver", "ru": "печень"},
+    {"site": "adrenal", "ru": "надпочечники"},
+    {"site": "lung_contra", "ru": "контралатеральное лёгкое"},
+    {"site": "pleura", "ru": "плевра (карциноматоз)"},
+    {"site": "pericardium", "ru": "перикард"}
+  ],
+  "stage_table": {
+    "Tis_N0_M0": "0",
+    "T1mi_N0_M0": "IA1",
+    "T1a_N0_M0": "IA1", "T1b_N0_M0": "IA2", "T1c_N0_M0": "IA3",
+    "T2a_N0_M0": "IB",  "T2b_N0_M0": "IIA",
+    "T1a_N1_M0": "IIA", "T1b_N1_M0": "IIA", "T1c_N1_M0": "IIA",
+    "T2a_N1_M0": "IIB", "T2b_N1_M0": "IIB",
+    "T3_N0_M0": "IIB",
+    "T1a_N2a_M0": "IIB", "T1b_N2a_M0": "IIB", "T1c_N2a_M0": "IIB",
+    "T2a_N2a_M0": "IIIA", "T2b_N2a_M0": "IIIA",
+    "T3_N1_M0": "IIIA", "T3_N2a_M0": "IIIA",
+    "T4_N0_M0": "IIIA", "T4_N1_M0": "IIIA",
+    "T1a_N2b_M0": "IIIA", "T1b_N2b_M0": "IIIA", "T1c_N2b_M0": "IIIA",
+    "T2a_N2b_M0": "IIIB", "T2b_N2b_M0": "IIIB",
+    "T3_N2b_M0": "IIIB", "T4_N2a_M0": "IIIB", "T4_N2b_M0": "IIIB",
+    "ANY_N3_M0": "IIIC",
+    "ANY_ANY_M1a": "IVA", "ANY_ANY_M1b": "IVA",
+    "ANY_ANY_M1c1": "IVB", "ANY_ANY_M1c2": "IVB"
+  },
+  "stage_groups": {
+    "early": ["0", "IA1", "IA2", "IA3", "IB"],
+    "locally_advanced_operable": ["IIA", "IIB"],
+    "locally_advanced_borderline": ["IIIA"],
+    "locally_advanced_inoperable": ["IIIB", "IIIC"],
+    "metastatic": ["IVA", "IVB"]
+  },
+  "t_distribution": {
+    "T1a": 0.07, "T1b": 0.11, "T1c": 0.13,
+    "T2a": 0.18, "T2b": 0.14,
+    "T3": 0.17, "T4": 0.16,
+    "T1mi": 0.02, "Tis": 0.02
+  },
+  "n_distribution_by_t_group": {
+    "early":         {"N0": 0.78, "N1": 0.14, "N2a": 0.06, "N2b": 0.02, "N3": 0.00},
+    "intermediate":  {"N0": 0.42, "N1": 0.24, "N2a": 0.15, "N2b": 0.13, "N3": 0.06},
+    "advanced":      {"N0": 0.15, "N1": 0.18, "N2a": 0.20, "N2b": 0.27, "N3": 0.20}
+  },
+  "t_groups": {
+    "early": ["Tis", "T1mi", "T1a", "T1b", "T1c"],
+    "intermediate": ["T2a", "T2b"],
+    "advanced": ["T3", "T4"]
+  },
+  "m_distribution_by_n": {
+    "N0": {"M0": 0.85, "M1a": 0.05, "M1b": 0.04, "M1c1": 0.04, "M1c2": 0.02},
+    "N1": {"M0": 0.75, "M1a": 0.07, "M1b": 0.06, "M1c1": 0.07, "M1c2": 0.05},
+    "N2a": {"M0": 0.55, "M1a": 0.10, "M1b": 0.10, "M1c1": 0.14, "M1c2": 0.11},
+    "N2b": {"M0": 0.40, "M1a": 0.12, "M1b": 0.12, "M1c1": 0.20, "M1c2": 0.16},
+    "N3": {"M0": 0.20, "M1a": 0.20, "M1b": 0.15, "M1c1": 0.25, "M1c2": 0.20}
+  }
+}

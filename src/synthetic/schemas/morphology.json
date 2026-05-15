@@ -1,0 +1,74 @@
+{
+  "specimen_types": [
+    {"id": "SP1", "text": "Биопсия верхней доли правого лёгкого (CT-guided)", "is_resection": false},
+    {"id": "SP2", "text": "Биопсия нижней доли правого лёгкого", "is_resection": false},
+    {"id": "SP3", "text": "Биопсия верхней доли левого лёгкого (CT-guided)", "is_resection": false},
+    {"id": "SP4", "text": "Биопсия нижней доли левого лёгкого", "is_resection": false},
+    {"id": "SP5", "text": "Бронхоскопическая биопсия (forceps) из центрального бронха", "is_resection": false},
+    {"id": "SP6", "text": "EBUS-TBNA центральной опухоли", "is_resection": false},
+    {"id": "SP7", "text": "Лобэктомия верхней доли правого лёгкого", "is_resection": true},
+    {"id": "SP8", "text": "Лобэктомия нижней доли левого лёгкого", "is_resection": true},
+    {"id": "SP9", "text": "Клиновидная резекция верхней доли левого лёгкого", "is_resection": true},
+    {"id": "SP10", "text": "Сегментэктомия (S1+2) левого лёгкого", "is_resection": true}
+  ],
+  "adeno_patterns": [
+    {"id": "P_LEP", "name_ru": "Лепидический", "name_en": "lepidic", "is_high_grade": false,
+     "typical_grades": ["G1"]},
+    {"id": "P_ACI", "name_ru": "Ацинарный", "name_en": "acinar", "is_high_grade": false,
+     "typical_grades": ["G1", "G2"]},
+    {"id": "P_PAP", "name_ru": "Папиллярный", "name_en": "papillary", "is_high_grade": false,
+     "typical_grades": ["G1", "G2"]},
+    {"id": "P_MIC", "name_ru": "Микропапиллярный", "name_en": "micropapillary", "is_high_grade": true,
+     "typical_grades": ["G2", "G3"]},
+    {"id": "P_SOL", "name_ru": "Солидный", "name_en": "solid pattern", "is_high_grade": true,
+     "typical_grades": ["G3"]},
+    {"id": "P_CRI", "name_ru": "Криброзный", "name_en": "cribriform", "is_high_grade": true,
+     "typical_grades": ["G2", "G3"]}
+  ],
+  "grade_rules": {
+    "comment": "IASLC 2020: G3 если ≥20% high-grade паттернов; G2 если 5-19%; G1 если <5%",
+    "high_grade_threshold_g3": 20,
+    "high_grade_threshold_g2": 5,
+    "dominant_pattern_by_grade": {
+      "G1": ["P_LEP", "P_ACI", "P_PAP"],
+      "G2": ["P_ACI", "P_PAP"],
+      "G3": ["P_SOL", "P_MIC", "P_CRI", "P_ACI"]
+    },
+    "dominant_proportion_range_g1": [70, 90],
+    "dominant_proportion_range_g2": [50, 75],
+    "dominant_proportion_range_g3": [50, 80]
+  },
+  "invasion_features": {
+    "lvi": {
+      "positive_text": "обнаружена",
+      "negative_text": "не обнаружена",
+      "indeterminate_text": "не оценивается (ограничение материала)",
+      "comment": "Лимфоваскулярная инвазия"
+    },
+    "pleural": {
+      "PL0_text": "PL0 — отсутствует",
+      "PL1_text": "PL1 — инвазия висцеральной плевры (за эластическую мембрану)",
+      "PL2_text": "PL2 — инвазия за пределы висцеральной плевры (поверхность)",
+      "PL3_text": "PL3 — инвазия париетальной плевры",
+      "not_applicable_text": "не оценивается (биопсийный материал, плевра не представлена)"
+    },
+    "perineural": {
+      "positive_text": "обнаружена",
+      "negative_text": "не обнаружена",
+      "comment": "Периневральная инвазия (PNI)"
+    }
+  },
+  "margins": {
+    "not_applicable_text": "Не оценены (биопсия)",
+    "r0_text": "R0 — края резекции свободны от опухоли",
+    "r0_with_distance_text": "R0 — ближайший край резекции на расстоянии {mm} мм",
+    "r1_text": "R1 — микроскопический позитивный край",
+    "r2_text": "R2 — макроскопически позитивный край"
+  },
+  "macro_comments": [
+    "В образце определяется жизнеспособная опухоль. Техническое качество материала: удовлетворительное.",
+    "Материал репрезентативен для патоморфологического исследования. Качество: хорошее.",
+    "Опухолевая ткань занимает большую часть представленного материала. Качество: удовлетворительное.",
+    "В материале — фрагменты опухоли с участками некроза до 15%. Качество: достаточное для верификации."
+  ]
+}

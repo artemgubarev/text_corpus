@@ -1,0 +1,55 @@
+{
+  "diagnoses": [
+    {"id": "D1", "name": "Аденокарцинома лёгкого", "name_lat": "Adenocarcinoma of the lung",
+     "category": "NSCLC", "subtype_pool": "adeno", "gradable": true,
+     "icd_o_3": "8140/3", "frequency": "high"},
+    {"id": "D2", "name": "Плоскоклеточный рак лёгкого", "name_lat": "Squamous cell carcinoma",
+     "category": "NSCLC", "subtype_pool": "squamous", "gradable": true,
+     "icd_o_3": "8070/3", "frequency": "high"},
+    {"id": "D3", "name": "Крупноклеточный рак лёгкого", "name_lat": "Large cell carcinoma",
+     "category": "NSCLC", "subtype_pool": null, "gradable": false,
+     "icd_o_3": "8012/3", "frequency": "low"},
+    {"id": "D4", "name": "Аденосквамозный рак лёгкого", "name_lat": "Adenosquamous carcinoma",
+     "category": "NSCLC", "subtype_pool": null, "gradable": true,
+     "icd_o_3": "8560/3", "frequency": "low"},
+    {"id": "D5", "name": "Немелкоклеточный рак БДУ", "name_lat": "Non-small cell lung carcinoma, NOS",
+     "category": "NSCLC", "subtype_pool": null, "gradable": false,
+     "icd_o_3": "8046/3", "frequency": "medium"},
+    {"id": "D6", "name": "Мелкоклеточный рак лёгкого", "name_lat": "Small cell lung carcinoma",
+     "category": "SCLC", "subtype_pool": null, "gradable": false,
+     "icd_o_3": "8041/3", "frequency": "medium"},
+    {"id": "D8", "name": "Нейроэндокринная опухоль G1 (типичный карциноид)",
+     "name_lat": "Typical carcinoid", "category": "carcinoid", "subtype_pool": null,
+     "gradable": false, "icd_o_3": "8240/3", "frequency": "low"},
+    {"id": "D9", "name": "Нейроэндокринная опухоль G2 (атипичный карциноид)",
+     "name_lat": "Atypical carcinoid", "category": "carcinoid", "subtype_pool": null,
+     "gradable": false, "icd_o_3": "8249/3", "frequency": "low"}
+  ],
+  "adenocarcinoma_subtypes": [
+    {"id": "AD1", "name": "инвазивная немуцинозная", "name_lat": "Invasive non-mucinous adenocarcinoma",
+     "gradable": true, "stage_min": "T1a", "frequency": "high"},
+    {"id": "AD2", "name": "инвазивная муцинозная", "name_lat": "Invasive mucinous adenocarcinoma",
+     "gradable": true, "stage_min": "T1a", "frequency": "low"},
+    {"id": "AD3", "name": "минимально инвазивная (MIA)", "name_lat": "Minimally invasive adenocarcinoma",
+     "gradable": false, "stage_max": "T1mi", "frequency": "low"},
+    {"id": "AD4", "name": "аденокарцинома in situ (AIS)", "name_lat": "Adenocarcinoma in situ",
+     "gradable": false, "stage_only": "Tis", "frequency": "very_low"}
+  ],
+  "squamous_subtypes": [
+    {"id": "SCC1", "name": "ороговевающий", "frequency": "high"},
+    {"id": "SCC2", "name": "неороговевающий", "frequency": "high"},
+    {"id": "SCC3", "name": "базалоидный", "frequency": "low"}
+  ],
+  "block_applicability": {
+    "comment": "Какие блоки применимы к какому типу диагноза. Используется master state",
+    "morphology_grade_patterns": ["D1"],
+    "molecular_profile": ["D1", "D2", "D3", "D4", "D5"],
+    "tnm_staging": ["D1", "D2", "D3", "D4", "D5", "D6"],
+    "tnm_carcinoid_separate": ["D8", "D9"],
+    "ecog_assessment": ["D1", "D2", "D3", "D4", "D5", "D6", "D8", "D9"]
+  },
+  "diagnosis_distribution": {
+    "D1": 0.45, "D2": 0.25, "D3": 0.04, "D4": 0.03, "D5": 0.05,
+    "D6": 0.13, "D8": 0.03, "D9": 0.02
+  }
+}
