@@ -1,0 +1,98 @@
+# Конфигурация для дипломной работы.
+# Цель: сравнение LoRA vs Full fine-tune на 4 специализированных моделях.
+# Ресурсы: одна GPU 24-40GB.
+
+# ============================================================
+# Данные
+# ============================================================
+data:
+  source_jsonl: "../synthetic/reports.jsonl"
+  output_dir: "outputs/datasets"
+  train_ratio: 0.85
+  val_ratio: 0.10
+  test_ratio: 0.05
+  seed: 42
+  use_augmentations_train: true
+  use_augmentations_val: false
+
+# ============================================================
+# Модели и методы дообучения
+# ============================================================
+models:
+  # 4 specialized модели — каждая обучается двумя методами для сравнения
+  base_model_id: "Qwen/Qwen2.5-3B-Instruct"      # для LoRA — 3B влезает в 24GB
+  base_model_id_full_ft: "Qwen/Qwen2.5-1.5B-Instruct"  # для full FT — 1.5B чтобы влезть
+  short_name_lora: "qwen2.5-3b-lora"
+  short_name_full: "qwen2.5-1.5b-full"
+  blocks: ["surgery", "radiotherapy", "systemic", "supportive"]
+  max_length: 3072
+
+  # LoRA hyperparameters
+  lora:
+    r: 16
+    alpha: 32
+    dropout: 0.05
+    target_modules: ["q_proj", "k_proj", "v_proj", "o_proj",
+                     "gate_proj", "up_proj", "down_proj"]
+
+# ============================================================
+# Обучение
+# ============================================================
+training:
+  output_dir: "outputs/checkpoints"
+  num_epochs: 3
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 2
+  gradient_accumulation_steps: 16
+  warmup_ratio: 0.03
+  lr_scheduler_type: "cosine"
+  weight_decay: 0.01
+  logging_steps: 10
+  eval_steps: 100
+  save_steps: 200
+  save_total_limit: 2
+  bf16: true
+  optim: "adamw_torch"
+  gradient_checkpointing: true
+  seed: 42
+
+  # Разные learning rate для LoRA и full FT
+  lora_learning_rate: 2.0e-4
+  full_learning_rate: 5.0e-5
+
+# ============================================================
+# Инференс
+# ============================================================
+inference:
+  output_dir: "outputs/predictions"
+  max_new_tokens: 512
+  temperature: 0.3
+  top_p: 0.9
+  do_sample: true
+  num_beams: 1
+  num_test_samples: null
+
+# ============================================================
+# Метрики
+# ============================================================
+evaluation:
+  output_dir: "outputs/metrics"
+  embedding_model: "intfloat/multilingual-e5-base"
+
+# ============================================================
+# Визуализация
+# ============================================================
+visualization:
+  output_dir: "outputs/plots"
+  dpi: 150
+  figsize: [10, 6]
+  style: "seaborn-v0_8-darkgrid"
+  reduce_method: "umap"
+  reduce_n_components: 2
+
+# ============================================================
+# Logging
+# ============================================================
+logging:
+  use_wandb: false
+  wandb_project: "lung-cancer-recommendations-thesis"
